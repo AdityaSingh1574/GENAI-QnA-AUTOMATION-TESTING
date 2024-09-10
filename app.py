@@ -9,7 +9,7 @@ load_dotenv()
 
 # interpreter.llm.api_key = os.getenv("OPENAI_API_KEY")
 interpreter.auto_run = True
-interpreter.llm.model = "openai/gpt-4o-mini"
+interpreter.llm.model = "openai/claude-3-5-sonnet"
 interpreter.llm.api_base = 'http://localhost:4000'
 interpreter.llm.supports_vision = True
 interpreter.llm.supports_functions = True
@@ -20,6 +20,11 @@ interpreter.llm.temperature = 0.1
 # interpreter.llm.model = "openai/gpt-4o-mini"
 # interpreter.llm.temperature = 0.1
 
+
+interpreter.custom_instructions = """The user will show you an image of the code you write. You can view images directly.
+For HTML: This will be run STATELESSLY. You may NEVER write '<!-- previous code here... --!>' or `<!-- header will go here -->` or anything like that. It is CRITICAL TO NEVER WRITE PLACEHOLDERS. Placeholders will BREAK it. You must write the FULL HTML CODE EVERY TIME. Therefore you cannot write HTML piecemeal—write all the HTML, CSS, and possibly Javascript **in one step, in one code block**. The user will help you review it visually.
+If the user submits a filepath, you will also see the image. The filepath and user image will both be in the user's message.
+If you use `plt.show()`, the resulting image will be sent to you. However, if you use `PIL.Image.show()`, the resulting image will NOT be sent to you."""
 
 interpreter.custom_instructions = """You need to follow these instructions to execute the given Task:
 1. Plan Out your task and divide them into subtasks.
@@ -34,26 +39,26 @@ interpreter.custom_instructions = """You need to follow these instructions to ex
 
 
 # LEVEL 01 EXAMPLES
-interpreter.chat("Visit https://www.flipkart.com and scroll down by 500 pixels to reach the trending section. Take a screenshot of the trending items and save it.Save the Code")
-interpreter.chat("Go to https://www.snapdeal.com and scroll down to access the 'Deals of the Day' section. Take a screenshot of this section and save it.Save the Code")
-interpreter.chat("Navigate to https://www.myntra.com and hover over the 'Men' section on the homepage. Take a screenshot of the dropdown menu that appears and save it.Save the Code")
-interpreter.chat("Visit https://www.amazon.in and scroll to the 'Amazon Prime' advertisement section. Refresh the page three times and take a screenshot of the third refresh state.Save the Code")
-interpreter.chat("Access https://www.tatacliq.com and scroll down to the 'New Arrivals' section. Take a screenshot capturing the displayed products and save it.Save the Code")
-interpreter.chat("Go to https://www.ajio.com and zoom in by 150 percent on the homepage to enhance the visibility of 'Featured Brands'. Take a screenshot of the zoomed-in view.Save the Code")
-interpreter.chat("Visit https://www.croma.com and scroll to the footer of the homepage. Take a screenshot that captures the contact information and save it.Save the Code")
-interpreter.chat("Navigate to https://www.reliancedigital.in and refresh the homepage five times to ensure stability of featured content. Take a screenshot of the homepage after the last refresh.Save the Code")
-interpreter.chat("Visit https://www.shopclues.com and find the 'Flash Deals' section without scrolling. Take a screenshot of this section and save it.Save the Code")
-interpreter.chat("Go to https://www.jiomart.com and hover over the 'Groceries' section to display its submenu. Take a screenshot of the submenu and save it.Save the Code")
-interpreter.chat("Navigate to https://www.bigbasket.com and scroll down to the 'Best Sellers' section on the homepage. Take a screenshot and save it.Save the Code")
-interpreter.chat("Visit https://www.swiggy.com and capture the top navigation bar by taking a screenshot without any scrolling, focusing on the logo and menu items.Save the Code")
-interpreter.chat("Go to https://www.zomato.com and refresh the homepage twice, then take a screenshot of the 'Collections' section that showcases popular eateries.Save the Code")
-interpreter.chat("Access https://www.bookmyshow.com and take a screenshot of the 'Currently Trending Events' section by scrolling down to this specific area.Save the Code")
-interpreter.chat("Navigate to https://www.oyorooms.com and take a screenshot of the 'Top Rated Hotels' section by scrolling down directly to that part of the homepage.Save the Code")
-interpreter.chat("Visit https://www.lenskart.com and hover over the 'Eyeglasses' menu item to reveal the dropdown. Take a screenshot of the expanded dropdown menu.Save the Code")
-interpreter.chat("Go to https://www.nykaa.com and scroll down to the 'New Launches' section on the homepage. Take a screenshot of the new product offerings.Save the Code")
-interpreter.chat("Navigate to https://www.pepperfry.com and take a screenshot of the homepage's main banner which rotates between different promotional offers.Save the Code")
-interpreter.chat("Visit https://www.fabindia.com and focus on the 'Season's Special' section by scrolling down. Take a screenshot of this section and save it.Save the Code")
-interpreter.chat("Access https://www.decathlon.in and find the 'Sports Accessories' section by scrolling, then take a screenshot to capture the featured products.Save the Code")
+# interpreter.chat("Visit https://www.flipkart.com and scroll down by 500 pixels to reach the trending section. Take a screenshot of the trending items and save it.Save the Code")
+# interpreter.chat("Go to https://www.snapdeal.com and click on 'Sports Footwear' section. Take a screenshot of this section and save it.Save the Code")
+# interpreter.chat("Navigate to https://www.myntra.com and hover over the 'Men' section on the homepage. Take a screenshot of the dropdown menu that appears and save it.Save the Code")
+# interpreter.chat("Visit https://www.amazon.in and click on 'Amazon miniTV'. Refresh the page three times and take a screenshot of the third refresh state.Save the Code")
+# interpreter.chat("Access https://www.tatacliq.com and Hover over 'Brands' and click on 'Men's Wear' on the menu which appears after hovering. Take a screenshot capturing the displayed products and save it.Save the Code") # failed
+# interpreter.chat("Go to https://www.ajio.com and zoom in by 150 percent on the homepage. Take a screenshot of the zoomed-in view.Save the Code")
+# interpreter.chat("Visit https://www.croma.com and scroll to the footer of the homepage and type in the email 'ariesatgemini@gmail.com' in 'CONNECT WITH US' and click on the arrow. Take a screenshot that captures the contact information and save it.Save the Code")
+# interpreter.chat("Navigate to https://www.reliancedigital.in and refresh the homepage five times to ensure stability of featured content. Take a screenshot of the homepage after the last refresh.Save the Code")
+# interpreter.chat("Visit https://www.shopclues.com and find the 'Flash Deals' section without scrolling. Take a screenshot of this section and save it.Save the Code")
+# interpreter.chat("Go to https://www.jiomart.com and hover over the 'Groceries' section to display its submenu. Take a screenshot of the submenu and save it.Save the Code")
+# interpreter.chat("Navigate to https://www.bigbasket.com and scroll down to the 'Best Sellers' section on the homepage. Take a screenshot and save it.Save the Code")
+# interpreter.chat("Visit https://www.swiggy.com and capture the top navigation bar by taking a screenshot without any scrolling, focusing on the logo and menu items.Save the Code")
+# interpreter.chat("Go to https://www.zomato.com and refresh the homepage twice, then take a screenshot of the 'Collections' section that showcases popular eateries.Save the Code")
+# interpreter.chat("Access https://www.bookmyshow.com and take a screenshot of the 'Currently Trending Events' section by scrolling down to this specific area.Save the Code")
+# interpreter.chat("Navigate to https://www.oyorooms.com and take a screenshot of the 'Top Rated Hotels' section by scrolling down directly to that part of the homepage.Save the Code")
+# interpreter.chat("Visit https://www.lenskart.com and hover over the 'Eyeglasses' menu item to reveal the dropdown. Take a screenshot of the expanded dropdown menu.Save the Code")
+# interpreter.chat("Go to https://www.nykaa.com and scroll down to the 'New Launches' section on the homepage. Take a screenshot of the new product offerings.Save the Code")
+# interpreter.chat("Navigate to https://www.pepperfry.com and take a screenshot of the homepage's main banner which rotates between different promotional offers.Save the Code")
+# interpreter.chat("Visit https://www.fabindia.com and focus on the 'Season's Special' section by scrolling down. Take a screenshot of this section and save it.Save the Code")
+# interpreter.chat("Access https://www.decathlon.in and find the 'Sports Accessories' section by scrolling, then take a screenshot to capture the featured products.Save the Code")
 
 
 # LEVEL 2 TEST CASES
