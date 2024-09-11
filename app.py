@@ -21,16 +21,20 @@ interpreter.llm.temperature = 0.1
 # interpreter.llm.temperature = 0.1
 
 
+# interpreter.system_message="""
+# You are a helpful assistant which generates Gherkin files as per the user message.
+# """
 
 interpreter.custom_instructions = """
 1. When taking the screen shot at every subtask save the screenshot save the screenshot in the format `subtask_<task number>` and save it in the current directory
-2. Use the filepath for accessing the screenshot for analyzing it
-3. Do not generate a code which asks user to give the input from the user, all the inputs will be present in the user message
+2. Use the filepath for accessing the screenshot for analyzing 
+4. Perform the task given using python and selenium, assume that they are pre-installed
+4. If automated access is blocked in the website in the user message then quit from the process and inform the same
 """
 
 interpreter.llm.execution_instructions  = """You need to follow these instructions to execute the given Task:
 1. read and analyse the message but the user and divide the whole task into subtasks
-2. start by taking a screenshot of the same and store it in the current directory into the folder for every page you visit as a part of the subtasks
+2. start by taking a screenshot of the webpage and store it in the current directory into the folder for every page you visit as a part of the subtasks
 3. use the saved screenshot to identify the element where the action has to be performed, for example identify the search bar for performing the search operation in the document
 4. analyze the the html content and try to find the correct xpath. You can Ignore tags like  <script> , <link>, <iframe>
 5. Give an Analysis of why code failed and then proceed with re-writing.
@@ -38,6 +42,7 @@ interpreter.llm.execution_instructions  = """You need to follow these instructio
 7. Use Python Selenium and assume chrome driver is already installed.
 8. Do not use WebDriverWait function for webdriver to find elements.
 9. Save the working code in the current directory after verifying the steps are correct.
+10. At the end of the tasks show a confirmatory result by taking a screenshot of the same and save in the current directory
 """
 
 
@@ -45,7 +50,7 @@ interpreter.llm.execution_instructions  = """You need to follow these instructio
 
 # interpreter.chat("use the filepath : C:\\Users\\aditya.singh1\\Desktop\\GEN-AI-AUTO\\GENAI-QnA-AUTOMATION-TESTING\\input_images\\flipkart_lading_page.png and show the image using code, save the code once done")
 # LEVEL 01 EXAMPLES
-# interpreter.chat("Use the screenshot with filepath C:\\Users\\aditya.singh1\\Desktop\\GEN-AI-AUTO\\GENAI-QnA-AUTOMATION-TESTING\\input_images\\flipkart_lading_page.png and Visit https://www.flipkart.com and scroll down by 500 pixels to reach the trending section. Take a screenshot of the trending items and save it.Save the Code")
+# interpreter.chat("Visit https://www.flipkart.com and scroll down by 500 pixels to reach the trending section. Take a screenshot of the trending items and save it.Save the Code")
 # interpreter.chat("Go to https://www.snapdeal.com and click on 'Sports Footwear' section. Take a screenshot of this section and save it.Save the Code")
 # interpreter.chat("Navigate to https://www.myntra.com and hover over the 'Men' section on the homepage. Take a screenshot of the dropdown menu that appears and save it.Save the Code")
 # interpreter.chat("Visit https://www.amazon.in and click on 'Amazon miniTV'. Refresh the page three times and take a screenshot of the third refresh state.Save the Code")
@@ -73,15 +78,14 @@ interpreter.llm.execution_instructions  = """You need to follow these instructio
 # interpreter.chat("Visit https://groww.in/, Find the Search Bar, and Search 'Motilal'. Finally Save the working code in the current directory")
 # interpreter.chat("Visit https://web.whatsapp.com/, wait for 30 seconds for me to Scan QR code, now find 'Any (You)' on search bar, click on the chat under the 'Chats' section and message 'how are you ?' 5 times. Finally Save the working code in the current directory")
 # interpreter.chat("Visit https://www.youtube.com/, Search for HuggingFace, Go to the 5th video and return the title. Finally Save the working code in the current directory")
-# interpreter.chat("Visit https://www.amazon.in, search for 'wireless headphones', click on the first result, switch the tab and add the it to your cart. and. Save the code in the current directory")
 # interpreter.chat("Visit https://www.ebay.com, find the search bar, and search for 'vintage watches'. Save the resulting code.")
 # interpreter.chat("Visit https://www.zomato.com, search for 'Italian white sauce pasta' in the current location, and click on the first option which appears in the search results, save the address of the first result. Save the code for the same")
 # interpreter.chat("Visit https://www.airbnb.co.in/ and search for accommodations in 'New York' for next 2 days from current date, and list the prices and locations of the first 5 results ")
 # interpreter.chat("Visit https://www.github.com, search for 'machine learning' repositories, and download the README files of the top 3 results . Save the code in the current directory.")
-interpreter.chat("Visit https://www.weather.com, search for the current weather in 'Tokyo', and take the screen shot of details .")
+# interpreter.chat("Visit https://www.weather.com, search for the current weather in 'Tokyo', and take the screen shot of details .")
 # interpreter.chat("Go to https://www.starbucks.in/, Search for latte and print the results of first 3 drinks. Save the code")
 # interpreter.chat("Navigate to https://www.adidas.com, search for 'soccer cleats', and list the names and prices of the top 5 results. Save the code.")
-# interpreter.chat("Visit https://artklim.com, find the search button and search for Rose and save take the screenshot and save it to downloads ")
+# interpreter.chat("Visit https://artklim.com, find the search button and search for Rose and save take the screenshot and save it to downloads")
 # interpreter.chat("Navigate to https://www.overstock.com, search for 'office chairs', and list the colors and prices of the first 5 results . Save the script.")
 # interpreter.chat("Go to https://www.ikea.com/in/en/, search for 'bedroom sets', and automate the process of adding the most popular set to the shopping cart . Save the code.")
 # interpreter.chat("Visit https://www.vogue.com/search, search for 'summer fashion trends', and scrape the titles of the first 5 articles and save it in a txt file. save the script in the current directory.")
@@ -95,7 +99,6 @@ interpreter.chat("Visit https://www.weather.com, search for the current weather 
 
 # LEVEL 3 TEST CASES
 # interpreter.chat("Visit https://www.flipkart.com, search for 'Apple iPhones', select the iPhone 13, add it to the cart, proceed to the cart, and take a screenshot. Save the code.")
-# interpreter.chat("Go to https://www.myntra.com, search for 'Adidas men running shoes', click on the second listing, select size, add to bag, view bag, and take a screenshot of the bag contents. Save the code.")
 # interpreter.chat("Navigate to https://www.amazon.in, search for 'Samsung Galaxy', click on the first search result, add the item to your wishlist, go to your wishlist, and take a screenshot. Save the code.")
 # interpreter.chat("Access https://www.tatacliq.com, search for '4K televisions', select the third item from the list, add it to your cart, go to the checkout page, and take a screenshot. Save the code.")
 # interpreter.chat("Visit https://www.ajio.com, find 'Casual Shoes', select a shoe from 'Puma', add to cart, then go to cart, and capture a screenshot of the cart details. Save the code.")
@@ -114,3 +117,6 @@ interpreter.chat("Visit https://www.weather.com, search for the current weather 
 # interpreter.chat("Visit https://www.fabindia.com, search for 'men's kurtas', click on a kurta, select size and color, add to bag, go to bag, and take a screenshot of the bag's contents. Save the code.")
 # interpreter.chat("Access https://www.vistaprint.in, design a custom T-shirt, add to cart, proceed to preview the design, continue to checkout, and take a screenshot of the final design in the cart. Save the code.")
 # interpreter.chat("Navigate to https://www.oyo.com, search for rooms in 'Goa', select a property, book a room, proceed to the booking details page, and take a screenshot of the booking confirmation. Save the code.")
+
+# interpreter.chat("Go to https://www.myntra.com, search for 'Adidas men running shoes', click on the second listing, select size, add to bag, view bag, and take a screenshot of the bag contents. Save the code.")
+# interpreter.chat("Visit https://www.amazon.in, search for 'wireless headphones', click on the first result, switch the tab and add the it to your cart. and. Save the code in the current directory")
