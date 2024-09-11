@@ -25,11 +25,12 @@ interpreter.llm.temperature = 0.1
 interpreter.custom_instructions = """
 1. When taking the screen shot at every subtask save the screenshot save the screenshot in the format `subtask_<task number>` and save it in the current directory
 2. Use the filepath for accessing the screenshot for analyzing it
+3. Do not generate a code which asks user to give the input from the user, all the inputs will be present in the user message
 """
 
 interpreter.llm.execution_instructions  = """You need to follow these instructions to execute the given Task:
 1. read and analyse the message but the user and divide the whole task into subtasks
-2. if the subtask involves navigating to a webpage then navigate to the page and take a screenshot of the same and store it in the current directory into the folder
+2. start by taking a screenshot of the same and store it in the current directory into the folder for every page you visit as a part of the subtasks
 3. use the saved screenshot to identify the element where the action has to be performed, for example identify the search bar for performing the search operation in the document
 4. analyze the the html content and try to find the correct xpath. You can Ignore tags like  <script> , <link>, <iframe>
 5. Give an Analysis of why code failed and then proceed with re-writing.
@@ -69,15 +70,15 @@ interpreter.llm.execution_instructions  = """You need to follow these instructio
 # LEVEL 2 TEST CASES
 
 # interpreter.chat("Visit https://shop.vaidyaratnammooss.com/arishtas-and-asavaas and click 'ADD TO CART' on any product. Finally Save the working code in the current directory")
-interpreter.chat("Visit https://groww.in/, Find the Search Bar, and Search 'Motilal'. Finally Save the working code in the current directory")
-# interpreter.chat("Use the screenshot with filepath C:\\Users\\aditya.singh1\\Desktop\\GEN-AI-AUTO\\GENAI-QnA-AUTOMATION-TESTING\\input_images\\whatapp.png and  Visit https://web.whatsapp.com/, wait for 30 seconds for me to Scan QR code, now find 'Any (You)' on search bar, click on the chat under the 'Chats' section and message 'how are you ?' 5 times. Finally Save the working code in the current directory")
+# interpreter.chat("Visit https://groww.in/, Find the Search Bar, and Search 'Motilal'. Finally Save the working code in the current directory")
+# interpreter.chat("Visit https://web.whatsapp.com/, wait for 30 seconds for me to Scan QR code, now find 'Any (You)' on search bar, click on the chat under the 'Chats' section and message 'how are you ?' 5 times. Finally Save the working code in the current directory")
 # interpreter.chat("Visit https://www.youtube.com/, Search for HuggingFace, Go to the 5th video and return the title. Finally Save the working code in the current directory")
-# interpreter.chat("Use the screenshot with filepath C:\\Users\\aditya.singh1\\Desktop\\GEN-AI-AUTO\\GENAI-QnA-AUTOMATION-TESTING\\input_images\\amazon.png and  Visit https://www.amazon.in, search for 'wireless headphones', and add the first product to your cart. and. Save the code in the current directory")
+# interpreter.chat("Visit https://www.amazon.in, search for 'wireless headphones', click on the first result, switch the tab and add the it to your cart. and. Save the code in the current directory")
 # interpreter.chat("Visit https://www.ebay.com, find the search bar, and search for 'vintage watches'. Save the resulting code.")
-# interpreter.chat("Use the screenshot with filepath C:\\Users\\aditya.singh1\\Desktop\\GEN-AI-AUTO\\GENAI-QnA-AUTOMATION-TESTING\\input_images\\zomato.jfif and Visit https://www.zomato.com, search for 'Italian restaurants' in your area, and capture the names and ratings of the first 10 results. Save the code for the same")
-# interpreter.chat("Use the screenshot with filepath C:\\Users\\aditya.singh1\\Desktop\\GEN-AI-AUTO\\GENAI-QnA-AUTOMATION-TESTING\\input_images\\airbnb.png and Visit https://www.airbnb.com, search for accommodations in 'New York' for any date, and list the prices and locations of the first 5 results ")
+# interpreter.chat("Visit https://www.zomato.com, search for 'Italian white sauce pasta' in the current location, and click on the first option which appears in the search results, save the address of the first result. Save the code for the same")
+# interpreter.chat("Visit https://www.airbnb.co.in/ and search for accommodations in 'New York' for next 2 days from current date, and list the prices and locations of the first 5 results ")
 # interpreter.chat("Visit https://www.github.com, search for 'machine learning' repositories, and download the README files of the top 3 results . Save the code in the current directory.")
-# interpreter.chat("Use the screenshot with filepath C:\\Users\\aditya.singh1\\Desktop\\GEN-AI-AUTO\\GENAI-QnA-AUTOMATION-TESTING\\input_images\\weather.jfif and Visit https://www.weather.com, search for the current weather in 'Tokyo', and take the screen shot of details .")
+interpreter.chat("Visit https://www.weather.com, search for the current weather in 'Tokyo', and take the screen shot of details .")
 # interpreter.chat("Go to https://www.starbucks.in/, Search for latte and print the results of first 3 drinks. Save the code")
 # interpreter.chat("Navigate to https://www.adidas.com, search for 'soccer cleats', and list the names and prices of the top 5 results. Save the code.")
 # interpreter.chat("Visit https://artklim.com, find the search button and search for Rose and save take the screenshot and save it to downloads ")
