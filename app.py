@@ -21,9 +21,11 @@ interpreter.llm.temperature = 0.1
 # interpreter.llm.temperature = 0.1
 
 
-# interpreter.system_message="""
-# You are a helpful assistant which generates Gherkin files as per the user message.
-# """
+interpreter.system_message="""
+You are a helpful assistant
+You will be instructed to visit a website using a given URL and some instructions in gherkin syntax
+You have to generate the code for completing the tasks present in the user message
+"""
 
 interpreter.custom_instructions = """
 1. When taking the screen shot at every subtask save the screenshot save the screenshot in the format `subtask_<task number>` and save it in the current directory
@@ -119,4 +121,9 @@ interpreter.llm.execution_instructions  = """You need to follow these instructio
 # interpreter.chat("Navigate to https://www.oyo.com, search for rooms in 'Goa', select a property, book a room, proceed to the booking details page, and take a screenshot of the booking confirmation. Save the code.")
 
 # interpreter.chat("Go to https://www.myntra.com, search for 'Adidas men running shoes', click on the second listing, select size, add to bag, view bag, and take a screenshot of the bag contents. Save the code.")
-# interpreter.chat("Visit https://www.amazon.in, search for 'wireless headphones', click on the first result, switch the tab and add the it to your cart. and. Save the code in the current directory")
+interpreter.chat(
+"""
+Visit https://www.amazon.in
+
+"""
+)
