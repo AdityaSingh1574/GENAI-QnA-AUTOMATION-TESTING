@@ -1,0 +1,40 @@
+Search Bar: Allows users to search for products on Amazon
+Navigation: Fresh: Navigates to the Fresh section
+Navigation: Amazon miniTV: Navigates to the Amazon miniTV section
+Navigation: Sell: Navigates to the Sell section
+Navigation: Best Sellers: Navigates to the Best Sellers section
+Navigation: Mobiles: Navigates to the Mobiles section
+Navigation: Today's Deals: Navigates to the Today's Deals section
+Navigation: Customer Service: Navigates to the Customer Service section
+Navigation: Prime: Navigates to the Prime section
+Navigation: Electronics: Navigates to the Electronics section
+Navigation: Fashion: Navigates to the Fashion section
+Navigation: New Releases: Navigates to the New Releases section
+Navigation: Home & Kitchen: Navigates to the Home & Kitchen section
+Navigation: Amazon Pay: Navigates to the Amazon Pay section
+Navigation: Computers: Navigates to the Computers section
+Navigation: Car & Motorbike: Navigates to the Car & Motorbike section
+Navigation: Books: Navigates to the Books section
+Navigation: Gift Ideas: Navigates to the Gift Ideas section
+Navigation: Toys & Games: Navigates to the Toys & Games section
+Navigation: Beauty & Personal Care: Navigates to the Beauty & Personal Care section
+Navigation: Home Improvement: Navigates to the Home Improvement section
+Navigation: Grocery & Gourmet Foods: Navigates to the Grocery & Gourmet Foods section
+Navigation: Pet Supplies: Navigates to the Pet Supplies section
+Navigation: Sports, Fitness & Outdoors: Navigates to the Sports, Fitness & Outdoors section
+Navigation: Gift Cards: Navigates to the Gift Cards section
+Navigation: Custom Products: Navigates to the Custom Products section
+Navigation: Health, Household & Personal Care: Navigates to the Health, Household & Personal Care section
+Navigation: Baby: Navigates to the Baby section
+Navigation: Video Games: Navigates to the Video Games section
+Navigation: Audible: Navigates to the Audible section
+Navigation: AmazonBasics: Navigates to the AmazonBasics section
+Navigation: Subscribe & Save: Navigates to the Subscribe & Save section
+Navigation: Coupons: Navigates to the Coupons section
+Sign In: Allows users to sign in to their Amazon account
+Language Selection: Allows users to change the website language
+Footer: About Us: Links to About Us page
+Footer: Careers: Links to Careers page
+Footer: Press Releases: Links to Press Releases page
+Footer: Amazon Science: Links to Amazon Science page
+Footer: Facebook: Links to Facebook page

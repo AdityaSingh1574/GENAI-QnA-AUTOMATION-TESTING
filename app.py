@@ -21,31 +21,52 @@ interpreter.llm.temperature = 0.1
 # interpreter.llm.temperature = 0.1
 
 
-interpreter.system_message="""
-You are a helpful assistant
-You will be instructed to visit a website using a given URL and some instructions in gherkin syntax
-You have to generate the code for completing the tasks present in the user message
+# interpreter.system_message="""
+# You are a helpful assistant
+# You will be instructed to visit a website using a given URL and some instructions in gherkin syntax
+# You have to generate the code for completing the tasks present in the user message
+# """
+
+# interpreter.custom_instructions = """
+# 1. When taking the screen shot at every subtask save the screenshot save the screenshot in the format `subtask_<task number>` and save it in the current directory
+# 2. Use the filepath for accessing the screenshot for analyzing 
+# 4. Perform the task given using python and selenium, assume that they are pre-installed
+# 4. If automated access is blocked in the website in the user message then quit from the process and inform the same
+# """
+
+# interpreter.llm.execution_instructions  = """You need to follow these instructions to execute the given Task:
+# 1. read and analyse the message but the user and divide the whole task into subtasks
+# 2. start by taking a screenshot of the webpage and store it in the current directory into the folder for every page you visit as a part of the subtasks
+# 3. use the saved screenshot to identify the element where the action has to be performed, for example identify the search bar for performing the search operation in the document
+# 4. analyze the the html content and try to find the correct xpath. You can Ignore tags like  <script> , <link>, <iframe>
+# 5. Give an Analysis of why code failed and then proceed with re-writing.
+# 6. To Verify if the Task was successfully done, check which site it has landed to maybe url or title
+# 7. Use Python Selenium and assume chrome driver is already installed.
+# 8. Do not use WebDriverWait function for webdriver to find elements.
+# 9. Save the working code in the current directory after verifying the steps are correct.
+# 10. At the end of the tasks show a confirmatory result by taking a screenshot of the same and save in the current directory
+# """
+
+interpreter.system_message = """
+You are a helpful assistant and you task is to generate a code that extracts features and descriptions from a website.
+the features are defined as the elements in the website which the user can interact with and perform actions like typing something in the search bar,hovering over the navigation bar elements, clicking on buttons
 """
 
-interpreter.custom_instructions = """
-1. When taking the screen shot at every subtask save the screenshot save the screenshot in the format `subtask_<task number>` and save it in the current directory
-2. Use the filepath for accessing the screenshot for analyzing 
-4. Perform the task given using python and selenium, assume that they are pre-installed
-4. If automated access is blocked in the website in the user message then quit from the process and inform the same
-"""
-
-interpreter.llm.execution_instructions  = """You need to follow these instructions to execute the given Task:
+interpreter.llm.execution_instructions = """You need to follow these instructions to execute the given Task:
 1. read and analyse the message but the user and divide the whole task into subtasks
-2. start by taking a screenshot of the webpage and store it in the current directory into the folder for every page you visit as a part of the subtasks
-3. use the saved screenshot to identify the element where the action has to be performed, for example identify the search bar for performing the search operation in the document
-4. analyze the the html content and try to find the correct xpath. You can Ignore tags like  <script> , <link>, <iframe>
-5. Give an Analysis of why code failed and then proceed with re-writing.
-6. To Verify if the Task was successfully done, check which site it has landed to maybe url or title
-7. Use Python Selenium and assume chrome driver is already installed.
-8. Do not use WebDriverWait function for webdriver to find elements.
-9. Save the working code in the current directory after verifying the steps are correct.
-10. At the end of the tasks show a confirmatory result by taking a screenshot of the same and save in the current directory
+2. start by taking a screenshot of the webpage and store it in the current directory by the name of `screenshot_<task number>`.png for every part of the page you visit as a part of covering the whole website
+3. Use the same saved screenshot and Your task will be to extract names and descriptions of all possible features which are available on the website using the screenshot, the names of the features will be same as the placeholder name
+4. Extract all the sub-features of the main features, for example all the options present in the navigation bar, all the options present in a drop-down
+5. Cover the entire website by scrolling down by 1080 pixels and taking the screenshot of the part whose features weren't extracted.
+6. Continue the above steps until the whole page is covered.
+7. Give an Analysis of why code failed and then proceed with re-writing.
+8. To Verify if the Task was successfully done, check which site it has landed to maybe url or title
+9. Use Python Selenium and assume chrome driver is already installed.
+10. Do not use WebDriverWait function for webdriver to find elements.
+11. Save the working code in the current directory after verifying the steps are correct.
 """
+
+interpreter.chat("Visit https://www.flipkart.com/ and extract the feature name and their descriptions and save them in a txt file in the current directory")
 
 
 
@@ -121,9 +142,34 @@ interpreter.llm.execution_instructions  = """You need to follow these instructio
 # interpreter.chat("Navigate to https://www.oyo.com, search for rooms in 'Goa', select a property, book a room, proceed to the booking details page, and take a screenshot of the booking confirmation. Save the code.")
 
 # interpreter.chat("Go to https://www.myntra.com, search for 'Adidas men running shoes', click on the second listing, select size, add to bag, view bag, and take a screenshot of the bag contents. Save the code.")
-interpreter.chat(
-"""
-Visit https://www.amazon.in
+# interpreter.chat(
+# """
+# Visit https://www.ebay.com/
+# Feature: Search Icon Functionality
+# 	As a user, I want to interact with the search icon to access search functionality
 
-"""
-)
+# Background: The application is open in a web browser
+
+# Scenario: Search icon visibility and scaling
+# # 	Verify that the search icon is visible and scales properly across different screen sizes
+# 	Given the user is on a page with the search icon
+# 	When the user views the page on different screen sizes
+# 	Then the search icon should be clearly visible on all screen sizes
+# 	And the search icon should maintain its proportions and quality when scaled
+
+# Scenario: Search icon interaction
+# # 	Ensure that clicking the search icon activates the search functionality
+# 	Given the user is on a page with the search icon
+# 	When the user clicks on the search icon
+# 	Then a search input field should appear or become active
+# 	And the user should be able to enter search terms in the input field
+
+# Scenario: Search icon accessibility
+# # 	Verify that the search icon is accessible to users with assistive technologies
+# 	Given the user is using a screen reader
+# 	When the user navigates to the search icon
+# 	Then the screen reader should announce it as a search function
+# 	And the user should be able to activate the search
+
+# """
+# )
