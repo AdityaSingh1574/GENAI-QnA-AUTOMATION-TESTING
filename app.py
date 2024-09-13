@@ -66,10 +66,119 @@ interpreter.llm.execution_instructions = """You need to follow these instruction
 11. Save the working code in the current directory after verifying the steps are correct.
 """
 
-interpreter.chat("Visit https://www.flipkart.com/ and extract the feature name and their descriptions and save them in a txt file in the current directory")
+# interpreter.chat("Visit https://www.myntra.com and extract the feature name and their descriptions and save them in a txt file in the current directory")
 
 
+interpreter.chat(""" visit the url : https://www.amazon.in/  and understand the given user stories below:
 
+  Feature: Add Books in the cart from Amazon
+
+   Scenario Outline: Search <SearchOption> From Amazon website
+     Given user Search <SearchOption> in the Search Box
+     And user add First <SearchOption> in the cart
+     When user add item to the cart
+     Examples:
+       | SearchOption |
+       | Book         |
+       | Shoes        |
+       | makeup       |
+       | pen          |
+       | NoteBook     |
+       | Dress        |
+       | Tops         |
+       | Jeans        |
+       | Suits        |
+
+   Scenario Outline: List down the Options of First Page
+     Given user Search <SearchOption> in the Search Box
+     Then user list and prints the name of the searchOption
+     Examples:
+       | SearchOption |
+       | Book         |
+       | Shoes        |
+       | makeup       |
+       | pen          |
+       | NoteBook     |
+       | Dress        |
+       | Tops         |
+       | Jeans        |
+       | Tshirt       |
+       | Suits        |
+
+   Scenario: Scroll Down to the end of the Page and back to the top
+     Given user scroll down to the end of the page
+     Then user comes back to the top
+
+   Scenario Outline: selects different options from the dropdown and search the options
+     Given user clicks on the dropdown
+     When user selects "<Option>" from the dropdown
+     Examples:
+       | Option                  |
+       | All Categories          |
+       | Alexa Skills            |
+       | Amazon Devices          |
+       | Amazon Fashion          |
+       | Amazon Fresh            |
+       | Amazon Fresh Meat       |
+       | Amazon Pharmacy         |
+       | Appliances              |
+       | Apps & Games            |
+       | Audible Audiobooks      |
+       | Baby                    |
+       | Beauty                  |
+       | Books                   |
+       | Car & Motorbike         |
+       | Clothing & Accessories  |
+       | Collectibles            |
+       | Computers & Accessories |
+       | Deals                   |
+       | Electronics             |
+       | Furniture               |
+       | Garden & Outdoors       |
+       | Gift Cards              |
+       | Grocery & Gourmet Foods |
+       | Health & Personal Care  |
+       | Home & Kitchen          |
+       | Industrial & Scientific |
+       | Jewellery               |
+       | Kindle Store            |
+       | Luggage & Bags          |
+       | Luxury Beauty           |
+       | Movies & TV Shows       |
+       | MP3 Music               |
+       | Musical Instruments     |
+       | Office Products         |
+       | Pet Supplies            |
+
+     Scenario: Select the suitable language
+       Given user opens the language tab
+       Then user selects the language
+                 
+
+Your task is to create a gherkin file which includes all the scenarios possible for the given feature.Consider the given below notes for the task.
+1.Each scenario should be structured with 'Given', 'When', and 'Then' steps. 
+2. Each Step Description should contain one of the suitable examples if possible .
+
+The OUTPUT JSON structure of the Gherkin file should follow the given below format:
+{{
+  "Feature": "<give name to this feature>",
+  "Description": "<describe the feature can also be considered as background >",
+  "Scenarios": [
+    {{
+      "Scenario": "<Scenario name>",
+      "Steps": [
+        {{
+          "StepType": "Given/When/Then",
+          "Description": "<Step description>"
+        }}
+      ]
+    }}
+  ]
+}}
+                                  
+and save the gherkin file in the same folder 
+                 
+""")
 
 # interpreter.chat("use the filepath : C:\\Users\\aditya.singh1\\Desktop\\GEN-AI-AUTO\\GENAI-QnA-AUTOMATION-TESTING\\input_images\\flipkart_lading_page.png and show the image using code, save the code once done")
 # LEVEL 01 EXAMPLES
