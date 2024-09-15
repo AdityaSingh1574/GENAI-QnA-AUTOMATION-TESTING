@@ -47,137 +47,99 @@ interpreter.llm.temperature = 0.1
 # 10. At the end of the tasks show a confirmatory result by taking a screenshot of the same and save in the current directory
 # """
 
-interpreter.system_message = """
-You are a helpful assistant and you task is to generate a code that extracts features and descriptions from a website.
-the features are defined as the elements in the website which the user can interact with and perform actions like typing something in the search bar,hovering over the navigation bar elements, clicking on buttons
-"""
+# interpreter.system_message = """
+# You are a helpful assistant and You will be given a user story and your task will be to generate new tasks on the basis of the given user story in JSON format
+# The user story will be in the following format
+# 1. it will be a list of instructions in gherkin syntax
+# 2. the terms enclosed between < and > are placeholder and can take value as stated in the `Example` section
+# 3. Find the value for the placeholder for can be found in the `Example` section with the name of the placeholder mentioned as column name
+# """
 
-interpreter.llm.execution_instructions = """You need to follow these instructions to execute the given Task:
-1. read and analyse the message but the user and divide the whole task into subtasks
-2. start by taking a screenshot of the webpage and store it in the current directory by the name of `screenshot_<task number>`.png for every part of the page you visit as a part of covering the whole website
-3. Use the same saved screenshot and Your task will be to extract names and descriptions of all possible features which are available on the website using the screenshot, the names of the features will be same as the placeholder name
-4. Extract all the sub-features of the main features, for example all the options present in the navigation bar, all the options present in a drop-down
-5. Cover the entire website by scrolling down by 1080 pixels and taking the screenshot of the part whose features weren't extracted.
-6. Continue the above steps until the whole page is covered.
-7. Give an Analysis of why code failed and then proceed with re-writing.
-8. To Verify if the Task was successfully done, check which site it has landed to maybe url or title
-9. Use Python Selenium and assume chrome driver is already installed.
-10. Do not use WebDriverWait function for webdriver to find elements.
-11. Save the working code in the current directory after verifying the steps are correct.
-"""
+# interpreter.llm.execution_instructions = """You can use the below instructions in order perform the task:
+# 1. go through the user story and understand which are the placeholders and which are the values for the given placeholders
+# 2. generate tasks from the given user story by replacing the placeholders with values as given in the `Example` section
+# 3. cover all the examples which are given in the  `Example` section 
+# 4. only the placeholder will be replaced by a value and everything else in in the task should remain same.
+# """
 
 # interpreter.chat("Visit https://www.myntra.com and extract the feature name and their descriptions and save them in a txt file in the current directory")
 
 
-interpreter.chat(""" visit the url : https://www.amazon.in/  and understand the given user stories below:
+interpreter.chat("""
+Feature: Select Options from Dropdown on Amazon Homepage
+  As a user, I want to select different options from the dropdown menu on Amazon's homepage
 
-  Feature: Add Books in the cart from Amazon
+  Scenario: Select All Categories from Dropdown
+    Given user is on the Amazon homepage
+    When user clicks on the dropdown menu
+    And user selects "All Categories" from the dropdown
+    Then "All Categories" should be displayed as the selected option
 
-   Scenario Outline: Search <SearchOption> From Amazon website
-     Given user Search <SearchOption> in the Search Box
-     And user add First <SearchOption> in the cart
-     When user add item to the cart
-     Examples:
-       | SearchOption |
-       | Book         |
-       | Shoes        |
-       | makeup       |
-       | pen          |
-       | NoteBook     |
-       | Dress        |
-       | Tops         |
-       | Jeans        |
-       | Suits        |
+  Scenario: Select Alexa Skills from Dropdown
+    Given user is on the Amazon homepage
+    When user clicks on the dropdown menu
+    And user selects "Alexa Skills" from the dropdown
+    Then "Alexa Skills" should be displayed as the selected option
 
-   Scenario Outline: List down the Options of First Page
-     Given user Search <SearchOption> in the Search Box
-     Then user list and prints the name of the searchOption
-     Examples:
-       | SearchOption |
-       | Book         |
-       | Shoes        |
-       | makeup       |
-       | pen          |
-       | NoteBook     |
-       | Dress        |
-       | Tops         |
-       | Jeans        |
-       | Tshirt       |
-       | Suits        |
+follow the instructions in order to complete the task:
+1. Given a  feature file, generate a working step definition file in Java that maps all steps in the feature file to corresponding methods in the step definition file.
+2. If an error is encountered then analyse the error, traceback the source of the error and fix the error 
+3. Save the code in the current directory
 
-   Scenario: Scroll Down to the end of the Page and back to the top
-     Given user scroll down to the end of the page
-     Then user comes back to the top
+Important instructions
+1. First, make sure you have a Maven or Gradle project set up with the following dependencies:
+    • Cucumber Java
+    • Cucumber JUnit
+    • Selenium Java
+    • JUnit
+2. complete the initial setup by creating a pom.xml and other requirements, assume everything needs to be installed an d a project must be created
+3. Use a simple python script in order to save the code in the current directory do not make use of the terminal to save the file.
+4. Run the files in the environment you have created and debug them if they do not work, To run the tests, you would typically use Maven. Get access to it if you dont have it.
 
-   Scenario Outline: selects different options from the dropdown and search the options
-     Given user clicks on the dropdown
-     When user selects "<Option>" from the dropdown
-     Examples:
-       | Option                  |
-       | All Categories          |
-       | Alexa Skills            |
-       | Amazon Devices          |
-       | Amazon Fashion          |
-       | Amazon Fresh            |
-       | Amazon Fresh Meat       |
-       | Amazon Pharmacy         |
-       | Appliances              |
-       | Apps & Games            |
-       | Audible Audiobooks      |
-       | Baby                    |
-       | Beauty                  |
-       | Books                   |
-       | Car & Motorbike         |
-       | Clothing & Accessories  |
-       | Collectibles            |
-       | Computers & Accessories |
-       | Deals                   |
-       | Electronics             |
-       | Furniture               |
-       | Garden & Outdoors       |
-       | Gift Cards              |
-       | Grocery & Gourmet Foods |
-       | Health & Personal Care  |
-       | Home & Kitchen          |
-       | Industrial & Scientific |
-       | Jewellery               |
-       | Kindle Store            |
-       | Luggage & Bags          |
-       | Luxury Beauty           |
-       | Movies & TV Shows       |
-       | MP3 Music               |
-       | Musical Instruments     |
-       | Office Products         |
-       | Pet Supplies            |
 
-     Scenario: Select the suitable language
-       Given user opens the language tab
-       Then user selects the language
-                 
+package stepdefinitions;
+import implementation.Implementation;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
 
-Your task is to create a gherkin file which includes all the scenarios possible for the given feature.Consider the given below notes for the task.
-1.Each scenario should be structured with 'Given', 'When', and 'Then' steps. 
-2. Each Step Description should contain one of the suitable examples if possible .
+public class StepDefinition {{
+    public Implementation implementation = new Implementation();
 
-The OUTPUT JSON structure of the Gherkin file should follow the given below format:
-{{
-  "Feature": "<give name to this feature>",
-  "Description": "<describe the feature can also be considered as background >",
-  "Scenarios": [
-    {{
-      "Scenario": "<Scenario name>",
-      "Steps": [
-        {{
-          "StepType": "Given/When/Then",
-          "Description": "<Step description>"
-        }}
-      ]
+    @Given("the user is on the home page")
+    public void launchUrl(){{
+        implementation.launchUrl(url);
     }}
-  ]
+
+    @When("the user clicks on login button")
+        public void userClicksOnLoginButton() {{
+            implementation.clickOnLoginButton();
+    }}
+
+    @Then("username and password fields should appear")
+        public void verifyLoginWindowAppears() {{
+            implementation.verifyLoginElements();
+    }}
+
+    @Then("close the browser")
+    public void closeBrowser(){{
+        implementation.closeBrowser();
+    }}
 }}
-                                  
-and save the gherkin file in the same folder 
-                 
+
+Important points:
+1. The above code is just an example.
+3. Ensure the step definition file contains launchUrl and closeBrowser methods.
+    @Given("the user is on the home page")
+    public void launchUrl(){{
+        String url = ""; // give the URL here that you want to launch
+        implementation.launchUrl();
+    }}
+
+    @Then("close the browser")
+    public void closeBrowser(){{
+        implementation.closeBrowser();
+    }}
 """)
 
 # interpreter.chat("use the filepath : C:\\Users\\aditya.singh1\\Desktop\\GEN-AI-AUTO\\GENAI-QnA-AUTOMATION-TESTING\\input_images\\flipkart_lading_page.png and show the image using code, save the code once done")

@@ -1,0 +1,287 @@
+{
+  "Feature": "Add Items to Cart from Amazon",
+  "Description": "As a user, I want to search for various items on Amazon.in and add them to my cart",
+  "Scenarios": [
+    {
+      "Scenario": "Search and Add Book to Cart",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user is on the Amazon.in homepage"
+        },
+        {
+          "StepType": "When",
+          "Description": "user searches for \"Book\" in the search box"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects the first book from the search results"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks on the \"Add to Cart\" button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the book should be added to the user's cart"
+        },
+        {
+          "StepType": "And",
+          "Description": "the cart count should increase by 1"
+        }
+      ]
+    },
+    {
+      "Scenario": "Search and Add Shoes to Cart",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user is on the Amazon.in homepage"
+        },
+        {
+          "StepType": "When",
+          "Description": "user searches for \"Shoes\" in the search box"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects the first pair of shoes from the search results"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects the desired size"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks on the \"Add to Cart\" button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the shoes should be added to the user's cart"
+        },
+        {
+          "StepType": "And",
+          "Description": "the cart count should increase by 1"
+        }
+      ]
+    },
+    {
+      "Scenario": "Search and Add Makeup Item to Cart",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user is on the Amazon.in homepage"
+        },
+        {
+          "StepType": "When",
+          "Description": "user searches for \"makeup\" in the search box"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects the first makeup item from the search results"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks on the \"Add to Cart\" button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the makeup item should be added to the user's cart"
+        },
+        {
+          "StepType": "And",
+          "Description": "the cart count should increase by 1"
+        }
+      ]
+    },
+    {
+      "Scenario": "Search and Add Pen to Cart",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user is on the Amazon.in homepage"
+        },
+        {
+          "StepType": "When",
+          "Description": "user searches for \"pen\" in the search box"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects the first pen from the search results"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks on the \"Add to Cart\" button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the pen should be added to the user's cart"
+        },
+        {
+          "StepType": "And",
+          "Description": "the cart count should increase by 1"
+        }
+      ]
+    },
+    {
+      "Scenario": "Search and Add Notebook to Cart",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user is on the Amazon.in homepage"
+        },
+        {
+          "StepType": "When",
+          "Description": "user searches for \"Notebook\" in the search box"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects the first notebook from the search results"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks on the \"Add to Cart\" button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the notebook should be added to the user's cart"
+        },
+        {
+          "StepType": "And",
+          "Description": "the cart count should increase by 1"
+        }
+      ]
+    },
+    {
+      "Scenario": "Search and Add Dress to Cart",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user is on the Amazon.in homepage"
+        },
+        {
+          "StepType": "When",
+          "Description": "user searches for \"Dress\" in the search box"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects the first dress from the search results"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects the desired size"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks on the \"Add to Cart\" button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the dress should be added to the user's cart"
+        },
+        {
+          "StepType": "And",
+          "Description": "the cart count should increase by 1"
+        }
+      ]
+    },
+    {
+      "Scenario": "Search and Add Tops to Cart",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user is on the Amazon.in homepage"
+        },
+        {
+          "StepType": "When",
+          "Description": "user searches for \"Tops\" in the search box"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects the first top from the search results"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects the desired size"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks on the \"Add to Cart\" button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the top should be added to the user's cart"
+        },
+        {
+          "StepType": "And",
+          "Description": "the cart count should increase by 1"
+        }
+      ]
+    },
+    {
+      "Scenario": "Search and Add Jeans to Cart",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user is on the Amazon.in homepage"
+        },
+        {
+          "StepType": "When",
+          "Description": "user searches for \"Jeans\" in the search box"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects the first pair of jeans from the search results"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects the desired size"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks on the \"Add to Cart\" button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the jeans should be added to the user's cart"
+        },
+        {
+          "StepType": "And",
+          "Description": "the cart count should increase by 1"
+        }
+      ]
+    },
+    {
+      "Scenario": "Search and Add Suits to Cart",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user is on the Amazon.in homepage"
+        },
+        {
+          "StepType": "When",
+          "Description": "user searches for \"Suits\" in the search box"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects the first suit from the search results"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects the desired size"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks on the \"Add to Cart\" button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the suit should be added to the user's cart"
+        },
+        {
+          "StepType": "And",
+          "Description": "the cart count should increase by 1"
+        }
+      ]
+    }
+  ]
+}
