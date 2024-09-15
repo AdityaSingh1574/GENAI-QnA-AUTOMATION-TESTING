@@ -54,17 +54,6 @@ model_list:
       aws_access_key_id: os.environ/CUSTOM_AWS_ACCESS_KEY_ID
       aws_secret_access_key: os.environ/CUSTOM_AWS_SECRET_ACCESS_KEY
       aws_region_name: us-west-2
-  # google gemini
-  - model_name: gemini-pro
-    litellm_params:
-      model: gemini/gemini-1.5-pro
-      api_key: os.environ/GEMINI_API_KEY
-  # openai llms
-  - model_name: "*"             
-    litellm_params:
-      model: openai/*        
-      api_key: os.environ/OPENAI_API_KEY
-  # anthropic keys
 
 
 litellm_settings:
