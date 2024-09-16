@@ -1,0 +1,251 @@
+{
+  "Feature": "MultiSteps Form",
+  "Description": "Automating the form and adding ScreenShot and ScreenRecording",
+  "Scenarios": [
+    {
+      "Scenario": "User successfully completes the multi-step form",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm",
+          "xpath": "//form[@id='regForm']"
+        },
+        {
+          "StepType": "When",
+          "Description": "user fills in the 'First name' field",
+          "xpath": "//input[@id='fname']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'Last name' field",
+          "xpath": "//input[@id='lname']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'E-mail' field",
+          "xpath": "//input[@id='email']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button",
+          "xpath": "//button[@id='nextBtn']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'Phone' field",
+          "xpath": "//input[@id='phone']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'dd' field for birth date",
+          "xpath": "//input[@id='dd']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'mm' field for birth month",
+          "xpath": "//input[@id='mm']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'yyyy' field for birth year",
+          "xpath": "//input[@id='yyyy']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button",
+          "xpath": "//button[@id='nextBtn']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'Username' field",
+          "xpath": "//input[@id='uname']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'Password' field",
+          "xpath": "//input[@id='pword']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Submit' button",
+          "xpath": "//button[@id='submitBtn']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the form should be successfully submitted",
+          "xpath": "//div[@id='message' and contains(text(), 'successfully')]"
+        },
+        {
+          "StepType": "And",
+          "Description": "a confirmation message should be displayed",
+          "xpath": "//div[@id='message']"
+        }
+      ]
+    },
+    {
+      "Scenario": "User navigates through the form steps",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm",
+          "xpath": "//form[@id='regForm']"
+        },
+        {
+          "StepType": "When",
+          "Description": "user clicks the 'Next' button on the first step",
+          "xpath": "//button[@id='nextBtn']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the second step of the form should be displayed",
+          "xpath": "//div[@id='step2' and @class='tab']"
+        },
+        {
+          "StepType": "When",
+          "Description": "user clicks the 'Next' button on the second step",
+          "xpath": "//button[@id='nextBtn']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the third step of the form should be displayed",
+          "xpath": "//div[@id='step3' and @class='tab']"
+        },
+        {
+          "StepType": "When",
+          "Description": "user clicks the 'Previous' button on the third step",
+          "xpath": "//button[@id='prevBtn']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the second step of the form should be displayed",
+          "xpath": "//div[@id='step2' and @class='tab']"
+        }
+      ]
+    },
+    {
+      "Scenario": "User attempts to submit the form with missing information",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm",
+          "xpath": "//form[@id='regForm']"
+        },
+        {
+          "StepType": "When",
+          "Description": "user leaves the 'First name' field empty",
+          "xpath": "//input[@id='fname']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button",
+          "xpath": "//button[@id='nextBtn']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "an error message should be displayed",
+          "xpath": "//span[@class='error-message']"
+        },
+        {
+          "StepType": "And",
+          "Description": "the form should not proceed to the next step",
+          "xpath": "//div[@id='step1' and @class='tab active']"
+        }
+      ]
+    },
+    {
+      "Scenario": "User enters invalid email format",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm",
+          "xpath": "//form[@id='regForm']"
+        },
+        {
+          "StepType": "When",
+          "Description": "user enters an invalid email format in the 'E-mail' field",
+          "xpath": "//input[@id='email']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button",
+          "xpath": "//button[@id='nextBtn']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "an error message should be displayed",
+          "xpath": "//span[@class='error-message']"
+        },
+        {
+          "StepType": "And",
+          "Description": "the form should not proceed to the next step",
+          "xpath": "//div[@id='step1' and @class='tab active']"
+        }
+      ]
+    },
+    {
+      "Scenario": "User enters invalid date format",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm",
+          "xpath": "//form[@id='regForm']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user is on the second step of the form",
+          "xpath": "//div[@id='step2' and @class='tab active']"
+        },
+        {
+          "StepType": "When",
+          "Description": "user enters an invalid date format in the 'dd', 'mm', or 'yyyy' fields",
+          "xpath": "//input[@id='dd'] | //input[@id='mm'] | //input[@id='yyyy']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button",
+          "xpath": "//button[@id='nextBtn']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "an error message should be displayed",
+          "xpath": "//span[@class='error-message']"
+        },
+        {
+          "StepType": "And",
+          "Description": "the form should not proceed to the next step",
+          "xpath": "//div[@id='step2' and @class='tab active']"
+        }
+      ]
+    },
+    {
+      "Scenario": "User cancels form submission",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm",
+          "xpath": "//form[@id='regForm']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user has filled in some information",
+          "xpath": "//input[@id='fname'] | //input[@id='lname'] | //input[@id='email']"
+        },
+        {
+          "StepType": "When",
+          "Description": "user clicks the 'Cancel' button",
+          "xpath": "//button[@id='cancelBtn']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the form should be reset",
+          "xpath": "//form[@id='regForm']//input[not(@value)]"
+        },
+        {
+          "StepType": "And",
+          "Description": "user should be returned to the first step",
+          "xpath": "//div[@id='step1' and @class='tab active']"
+        }
+      ]
+    }
+  ]
+}

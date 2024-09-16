@@ -1,0 +1,71 @@
+{
+  "Feature": "Admin View - User management",
+  "Description": "This feature covers the user management functionality in the Admin View of the helpdesk system.",
+  "Scenarios": [
+    {
+      "Scenario": "Add and remove a member in support team",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "Open 'Support Team' header",
+          "xpath": "//h2[contains(text(), 'Support Team')] | //button[contains(text(), 'Support Team')]"
+        },
+        {
+          "StepType": "When",
+          "Description": "Add new member '{user}' in support team having dept '{dept}' and role '{role}'",
+          "xpath": "//button[contains(text(), 'Add New Member')] | //input[@placeholder='Enter member name']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if member '{user}' is added with dept '{dept}' and role '{role}'",
+          "xpath": "//table//tr[contains(., '{user}') and contains(., '{dept}') and contains(., '{role}')]"
+        },
+        {
+          "StepType": "And",
+          "Description": "Delete the newly added user",
+          "xpath": "//tr[contains(., '{user}')]//button[contains(@class, 'delete') or contains(text(), 'Delete')]"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if user '{user}' is removed from support team",
+          "xpath": "//table[not(.//tr[contains(., '{user}')])]"
+        }
+      ]
+    },
+    {
+      "Scenario": "Add user to support team with having a role assigned already",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "Open 'Support Team' header",
+          "xpath": "//h2[contains(text(), 'Support Team')] | //button[contains(text(), 'Support Team')]"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if existing user can be added",
+          "xpath": "//button[contains(text(), 'Add Existing User')] | //select[@id='existing-user-select']"
+        }
+      ]
+    },
+    {
+      "Scenario": "Select filters for Support team",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "Open 'Support Team' header",
+          "xpath": "//h2[contains(text(), 'Support Team')] | //button[contains(text(), 'Support Team')]"
+        },
+        {
+          "StepType": "When",
+          "Description": "Select '{filters}' from the Filter box",
+          "xpath": "//div[contains(@class, 'filter-box')]//input[@type='checkbox' and @value='{filters}']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if displayed '{type}' rows contains '{filters}' added filters",
+          "xpath": "//table//tr[contains(@class, '{type}') and contains(., '{filters}')]"
+        }
+      ]
+    }
+  ]
+}

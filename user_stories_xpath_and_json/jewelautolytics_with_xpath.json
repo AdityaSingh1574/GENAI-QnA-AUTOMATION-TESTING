@@ -1,0 +1,353 @@
+                                                                                                                                   
+   {                                                                                                                                  
+    "Feature": "Autolytics",                                                                                                         
+    "Description": "This feature covers the functionality of the Autolytics screen in the Jewel ecosystem",                          
+    "Scenarios": [                                                                                                                   
+      {                                                                                                                              
+        "Scenario": "Verify Link Change after Clicking to Autolytics button",                                                        
+        "Steps": [                                                                                                                   
+          {                                                                                                                          
+            "StepType": "Given",                                                                                                     
+            "Description": "navigate to login-screen",                                                                               
+            "xpath": "//a[contains(@href, 'login') or contains(text(), 'Login')]"                                                    
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "login to jewel website",                                                                                 
+            "xpath": "//form[@id='login-form' or contains(@class, 'login-form')]"                                                    
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "When",                                                                                                      
+            "Description": "Click on the Autolytics screen",                                                                         
+            "xpath": "//a[contains(text(), 'Autolytics') or contains(@href, 'autolytics')]"                                          
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "Then",                                                                                                      
+            "Description": "the page link should change",                                                                            
+            "xpath": "//script[contains(text(), 'window.location.href')]"                                                            
+          }                                                                                                                          
+        ]                                                                                                                            
+      },                                                                                                                             
+      {                                                                                                                              
+        "Scenario": "Request Access to Projects in Autolytics",                                                                      
+        "Steps": [                                                                                                                   
+          {                                                                                                                          
+            "StepType": "Given",                                                                                                     
+            "Description": "user is on Autolytics screen",                                                                           
+            "xpath": "//div[contains(@class, 'autolytics-screen') or contains(@id, 'autolytics')]"                                   
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "there are no projects available",                                                                        
+            "xpath": "//div[contains(text(), 'No projects available') or contains(@class, 'no-projects')]"                           
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "When",                                                                                                      
+            "Description": "the user clicks on the Request Access button",                                                           
+            "xpath": "//button[contains(text(), 'Request Access') or @id='request-access-btn']"                                      
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "Then",                                                                                                      
+            "Description": "the user should be navigated to the Admin tab and create a new project",                                 
+            "xpath": "//div[contains(@class, 'admin-tab') or @id='admin-tab']//button[contains(text(), 'Create New Project')]"       
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "verify the project is created",                                                                          
+            "xpath": "//div[contains(@class, 'project-list')]//div[contains(@class, 'project-item')]"                                
+          }                                                                                                                          
+        ]                                                                                                                            
+      },                                                                                                                             
+      {                                                                                                                              
+        "Scenario": "Verify Total Number of Projects Displayed in Autolytics",                                                       
+        "Steps": [                                                                                                                   
+          {                                                                                                                          
+            "StepType": "Given",                                                                                                     
+            "Description": "navigate to Autolytics screen",                                                                          
+            "xpath": "//a[contains(text(), 'Autolytics') or contains(@href, 'autolytics')]"                                          
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "When",                                                                                                      
+            "Description": "user look at the "Total projects " column",                                                              
+            "xpath": "//th[contains(text(), 'Total projects')]"                                                                      
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "Then",                                                                                                      
+            "Description": "user should see the expected total number of projects as "1"",                                           
+            "xpath": "//td[contains(@class, 'total-projects') and text()='1']"                                                       
+          }                                                                                                                          
+        ]                                                                                                                            
+      },                                                                                                                             
+      {                                                                                                                              
+        "Scenario": "Verify Active Users Count",                                                                                     
+        "Steps": [                                                                                                                   
+          {                                                                                                                          
+            "StepType": "Given",                                                                                                     
+            "Description": "user is on Autolytics screen",                                                                           
+            "xpath": "//div[contains(@class, 'autolytics-screen') or contains(@id, 'autolytics')]"                                   
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "When",                                                                                                      
+            "Description": "user look at the Active User column",                                                                    
+            "xpath": "//th[contains(text(), 'Active User')]"                                                                         
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "Then",                                                                                                      
+            "Description": "user should see the expected number of active users as "1"",                                             
+            "xpath": "//td[contains(@class, 'active-users') and text()='1']"                                                         
+          }                                                                                                                          
+        ]                                                                                                                            
+      },                                                                                                                             
+      {                                                                                                                              
+        "Scenario": "Verify Automation TestCase Count",                                                                              
+        "Steps": [                                                                                                                   
+          {                                                                                                                          
+            "StepType": "Given",                                                                                                     
+            "Description": "user is on Autolytics screen",                                                                           
+            "xpath": "//div[contains(@class, 'autolytics-screen') or contains(@id, 'autolytics')]"                                   
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "When",                                                                                                      
+            "Description": "user look at the Automation TestCase column",                                                            
+            "xpath": "//th[contains(text(), 'Automation TestCase')]"                                                                 
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "Then",                                                                                                      
+            "Description": "user should see the expected number of Automated testcases as "0"",                                      
+            "xpath": "//td[contains(@class, 'automation-testcases') and text()='0']"                                                 
+          }                                                                                                                          
+        ]                                                                                                                            
+      },                                                                                                                             
+      {                                                                                                                              
+        "Scenario": "Verify Manual TestCase Count",                                                                                  
+        "Steps": [                                                                                                                   
+          {                                                                                                                          
+            "StepType": "Given",                                                                                                     
+            "Description": "user is on Autolytics screen",                                                                           
+            "xpath": "//div[contains(@class, 'autolytics-screen') or contains(@id, 'autolytics')]"                                   
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "When",                                                                                                      
+            "Description": "user look at the Manual TestCase column",                                                                
+            "xpath": "//th[contains(text(), 'Manual TestCase')]"                                                                     
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "Then",                                                                                                      
+            "Description": "user should see the expected number of Manual testcases as "0"",                                         
+            "xpath": "//td[contains(@class, 'manual-testcases') and text()='0']"                                                     
+          }                                                                                                                          
+        ]                                                                                                                            
+      },                                                                                                                             
+      {                                                                                                                              
+        "Scenario": "Verify the Increase in Pass and Fail Scenarios",                                                                
+        "Steps": [                                                                                                                   
+          {                                                                                                                          
+            "StepType": "Given",                                                                                                     
+            "Description": "user is on Autolytics screen",                                                                           
+            "xpath": "//div[contains(@class, 'autolytics-screen') or contains(@id, 'autolytics')]"                                   
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "When",                                                                                                      
+            "Description": "user click on MLab to create testcases",                                                                 
+            "xpath": "//a[contains(text(), 'MLab') or contains(@href, 'mlab')]"                                                      
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user create a folder named folderName in the MLab",                                                      
+            "xpath": "//button[contains(text(), 'Create Folder') or @id='create-folder-btn']"                                        
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user add a manual test case named testCaseName to the folder",                                           
+            "xpath": "//button[contains(text(), 'Add Test Case') or @id='add-testcase-btn']"                                         
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user add test steps for testCaseName named testStepName",                                                
+            "xpath": "//button[contains(text(), 'Add Test Step') or @id='add-teststep-btn']"                                         
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user go to ELab",                                                                                        
+            "xpath": "//a[contains(text(), 'ELab') or contains(@href, 'elab')]"                                                      
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user create a suite named suiteName in ELab",                                                            
+            "xpath": "//button[contains(text(), 'Create Suite') or @id='create-suite-btn']"                                          
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user import and add the testcases to the suite",                                                         
+            "xpath": "//button[contains(text(), 'Import Test Cases') or @id='import-testcases-btn']"                                 
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user execute the suite",                                                                                 
+            "xpath": "//button[contains(text(), 'Execute Suite') or @id='execute-suite-btn']"                                        
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "Then",                                                                                                      
+            "Description": "the report link should be available",                                                                    
+            "xpath": "//a[contains(@class, 'report-link') or contains(@href, 'report')]"                                             
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user click on the report link",                                                                          
+            "xpath": "//a[contains(@class, 'report-link') or contains(@href, 'report')]"                                             
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user assign testCaseOutcomes to the test steps",                                                         
+            "xpath": "//select[contains(@class, 'test-outcome') or @id='test-outcome-select']"                                       
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user save the changes",                                                                                  
+            "xpath": "//button[contains(text(), 'Save Changes') or @id='save-changes-btn']"                                          
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "Click on the Autolytics screen",                                                                         
+            "xpath": "//a[contains(text(), 'Autolytics') or contains(@href, 'autolytics')]"                                          
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "Then",                                                                                                      
+            "Description": "the number of "FAIL" test cases should increase by "1"",                                                 
+            "xpath": "//td[contains(@class, 'fail-testcases') and text()='1']"                                                       
+          }                                                                                                                          
+        ]                                                                                                                            
+      },                                                                                                                             
+      {                                                                                                                              
+        "Scenario": "Verify Suite Name in Latest Run and Project Name Matches",                                                      
+        "Steps": [                                                                                                                   
+          {                                                                                                                          
+            "StepType": "Given",                                                                                                     
+            "Description": "user is on Autolytics screen",                                                                           
+            "xpath": "//div[contains(@class, 'autolytics-screen') or contains(@id, 'autolytics')]"                                   
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "Then",                                                                                                      
+            "Description": "the name of the suite should appear under the Latest Run column",                                        
+            "xpath": "//th[contains(text(), 'Latest Run')]//following-sibling::td[contains(text(), 'suiteName')]"                    
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "the suite name in Autolytics should match suiteName",                                                    
+            "xpath": "//td[contains(@class, 'suite-name') and text()='suiteName']"                                                   
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "the project name in Autolytics should match projectName",                                                
+            "xpath": "//td[contains(@class, 'project-name') and text()='projectName']"                                               
+          }                                                                                                                          
+        ]                                                                                                                            
+      },                                                                                                                             
+      {                                                                                                                              
+        "Scenario": "Click on the View Report icon to View the report in New Tab",                                                   
+        "Steps": [                                                                                                                   
+          {                                                                                                                          
+            "StepType": "Given",                                                                                                     
+            "Description": "user is on Autolytics screen",                                                                           
+            "xpath": "//div[contains(@class, 'autolytics-screen') or contains(@id, 'autolytics')]"                                   
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "When",                                                                                                      
+            "Description": "user click on the view report icon",                                                                     
+            "xpath": "//a[contains(@class, 'view-report-icon') or @title='View Report']"                                             
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "Then",                                                                                                      
+            "Description": "user should see the report in the new tab",                                                              
+            "xpath": "//div[contains(@class, 'report-content') or @id='report-content']"                                             
+          }                                                                                                                          
+        ]                                                                                                                            
+      },                                                                                                                             
+      {                                                                                                                              
+        "Scenario": "Click on the TestCases Section and verify the name and number of the testcases",                                
+        "Steps": [                                                                                                                   
+          {                                                                                                                          
+            "StepType": "Given",                                                                                                     
+            "Description": "user is on Autolytics screen",                                                                           
+            "xpath": "//div[contains(@class, 'autolytics-screen') or contains(@id, 'autolytics')]"                                   
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "When",                                                                                                      
+            "Description": "user click on the view report icon",                                                                     
+            "xpath": "//a[contains(@class, 'view-report-icon') or @title='View Report']"                                             
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "Then",                                                                                                      
+            "Description": "user should see the report in the new tab",                                                              
+            "xpath": "//div[contains(@class, 'report-content') or @id='report-content']"                                             
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user navigate to the "Testcases" section",                                                               
+            "xpath": "//a[contains(text(), 'Testcases') or @href='#testcases']"                                                      
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "Then",                                                                                                      
+            "Description": "user should see "1" test cases",                                                                         
+            "xpath": "//div[contains(@class, 'testcase-count') and text()='1']"                                                      
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user should see the test case names",                                                                    
+            "xpath": "//div[contains(@class, 'testcase-name')]"                                                                      
+          }                                                                                                                          
+        ]                                                                                                                            
+      },                                                                                                                             
+      {                                                                                                                              
+        "Scenario": "Generate Suite Run Report in Autolytics",                                                                       
+        "Steps": [                                                                                                                   
+          {                                                                                                                          
+            "StepType": "Given",                                                                                                     
+            "Description": "Click on the Autolytics screen",                                                                         
+            "xpath": "//a[contains(text(), 'Autolytics') or contains(@href, 'autolytics')]"                                          
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "When",                                                                                                      
+            "Description": "user is on "Reporting" section",                                                                         
+            "xpath": "//div[contains(@class, 'reporting-section') or @id='reporting-section']"                                       
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "Then",                                                                                                      
+            "Description": "user should see "Create Report" button",                                                                 
+            "xpath": "//button[contains(text(), 'Create Report') or @id='create-report-btn']"                                        
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user click on "Create Report" button",                                                                   
+            "xpath": "//button[contains(text(), 'Create Report') or @id='create-report-btn']"                                        
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "But",                                                                                                       
+            "Description": "user should not fill all the details",                                                                   
+            "xpath": "//form[contains(@class, 'report-form')]//input[not(@value)]"                                                   
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "validate the message as "All fields are required !"",                                                    
+            "xpath": "//div[contains(@class, 'error-message') and text()='All fields are required !']"                               
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "close the report",                                                                                       
+            "xpath": "//button[contains(@class, 'close-report') or @title='Close Report']"                                           
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user click on "Create Report" button",                                                                   
+            "xpath": "//button[contains(text(), 'Create Report') or @id='create-report-btn']"                                        
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "And",                                                                                                       
+            "Description": "user fill the details and generate "Suite Run Report" the report successfully",                          
+            "xpath": "//form[contains(@class, 'report-form')]//button[contains(text(), 'Generate Report')]"                          
+          },                                                                                                                         
+          {                                                                                                                          
+            "StepType": "Then",                                                                                                      
+            "Description": "validate edit report button and check you're report selected has been generated or not "Suite Summary    
+  Report"",                                                                                                                          
+            "xpath     
