@@ -1,0 +1,30 @@
+{
+  "search_box": {
+    "by": "ID",
+    "value": "twotabsearchtextbox"
+  },
+  "search_button": {
+    "by": "ID",
+    "value": "nav-search-submit-button"
+  },
+  "first_result": {
+    "by": "CSS_SELECTOR",
+    "value": "div[data-component-type='s-search-result'] h2 a"
+  },
+  "add_to_cart_button": {
+    "by": "ID",
+    "value": "add-to-cart-button"
+  },
+  "cart_count": {
+    "by": "ID",
+    "value": "nav-cart-count"
+  },
+  "size_dropdown": {
+    "by": "ID",
+    "value": "native_dropdown_selected_size_name"
+  },
+  "color_options": {
+    "by": "CSS_SELECTOR",
+    "value": "li[id^='color_name_']"
+  }
+}
