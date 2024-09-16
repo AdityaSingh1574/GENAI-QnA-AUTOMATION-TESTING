@@ -1,0 +1,208 @@
+{
+  "Feature": "MultiSteps Form",
+  "Description": "Automating the form and adding ScreenShot and ScreenRecording",
+  "Scenarios": [
+    {
+      "Scenario": "User successfully completes the multi-step form",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm"
+        },
+        {
+          "StepType": "When",
+          "Description": "user fills in the 'First name' field"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'Last name' field"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'E-mail' field"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'Phone' field"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'dd' field for birth date"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'mm' field for birth month"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'yyyy' field for birth year"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'Username' field"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'Password' field"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Submit' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the form should be successfully submitted"
+        },
+        {
+          "StepType": "And",
+          "Description": "a confirmation message should be displayed"
+        }
+      ]
+    },
+    {
+      "Scenario": "User navigates through the form steps",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm"
+        },
+        {
+          "StepType": "When",
+          "Description": "user clicks the 'Next' button on the first step"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the second step of the form should be displayed"
+        },
+        {
+          "StepType": "When",
+          "Description": "user clicks the 'Next' button on the second step"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the third step of the form should be displayed"
+        },
+        {
+          "StepType": "When",
+          "Description": "user clicks the 'Previous' button on the third step"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the second step of the form should be displayed"
+        }
+      ]
+    },
+    {
+      "Scenario": "User attempts to submit the form with missing information",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm"
+        },
+        {
+          "StepType": "When",
+          "Description": "user leaves the 'First name' field empty"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "an error message should be displayed"
+        },
+        {
+          "StepType": "And",
+          "Description": "the form should not proceed to the next step"
+        }
+      ]
+    },
+    {
+      "Scenario": "User enters invalid email format",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm"
+        },
+        {
+          "StepType": "When",
+          "Description": "user enters an invalid email format in the 'E-mail' field"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "an error message should be displayed"
+        },
+        {
+          "StepType": "And",
+          "Description": "the form should not proceed to the next step"
+        }
+      ]
+    },
+    {
+      "Scenario": "User enters invalid date format",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm"
+        },
+        {
+          "StepType": "And",
+          "Description": "user is on the second step of the form"
+        },
+        {
+          "StepType": "When",
+          "Description": "user enters an invalid date format in the 'dd', 'mm', or 'yyyy' fields"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "an error message should be displayed"
+        },
+        {
+          "StepType": "And",
+          "Description": "the form should not proceed to the next step"
+        }
+      ]
+    },
+    {
+      "Scenario": "User cancels form submission",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm"
+        },
+        {
+          "StepType": "And",
+          "Description": "user has filled in some information"
+        },
+        {
+          "StepType": "When",
+          "Description": "user clicks the 'Cancel' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the form should be reset"
+        },
+        {
+          "StepType": "And",
+          "Description": "user should be returned to the first step"
+        }
+      ]
+    }
+  ]
+}

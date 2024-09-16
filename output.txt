@@ -1,0 +1,110 @@
+Feature: Amazon Shopping Experience
+  As a user of Amazon.in
+  I want to search for products, add them to cart, and navigate the website
+  So that I can have a smooth online shopping experience
+
+  Background:
+    Given the user is on the Amazon.in homepage
+
+  Scenario Outline: Search and Add Products to Cart
+    Given user Search "<SearchOption>" in the Search Box
+    When user adds the first "<SearchOption>" item to the cart
+    Then the item should be successfully added to the cart
+
+    Examples:
+      | SearchOption |
+      | Book         |
+      | Shoes        |
+      | makeup       |
+      | pen          |
+      | NoteBook     |
+      | Dress        |
+      | Tops         |
+      | Jeans        |
+      | Suits        |
+
+  Scenario Outline: List Search Results
+    Given user Search "<SearchOption>" in the Search Box
+    When the search results page loads
+    Then user should see a list of "<SearchOption>" items
+    And user should be able to print the names of the search results
+
+    Examples:
+      | SearchOption |
+      | Book         |
+      | Shoes        |
+      | makeup       |
+      | pen          |
+      | NoteBook     |
+      | Dress        |
+      | Tops         |
+      | Jeans        |
+      | Tshirt       |
+      | Suits        |
+
+  Scenario: Page Navigation
+    Given the user is on any Amazon.in page
+    When user scrolls down to the end of the page
+    Then user should see the footer content
+    When user scrolls back to the top of the page
+    Then user should see the header content
+
+  Scenario Outline: Category Search
+    Given user clicks on the category dropdown
+    When user selects "<Option>" from the dropdown
+    And user performs a search
+    Then the search results should be filtered by "<Option>"
+
+    Examples:
+      | Option                  |
+      | All Categories          |
+      | Alexa Skills            |
+      | Amazon Devices          |
+      | Amazon Fashion          |
+      | Amazon Fresh            |
+      | Amazon Pharmacy         |
+      | Appliances              |
+      | Baby                    |
+      | Beauty                  |
+      | Books                   |
+      | Car & Motorbike         |
+      | Computers & Accessories |
+      | Electronics             |
+      | Furniture               |
+      | Grocery & Gourmet Foods |
+      | Health & Personal Care  |
+      | Home & Kitchen          |
+      | Jewellery               |
+      | Kindle Store            |
+      | Luggage & Bags          |
+      | Pet Supplies            |
+
+  Scenario: Change Language Preference
+    Given user opens the language settings
+    When user selects a different language
+    Then the website content should be displayed in the selected language
+
+  Scenario: Apply Filters to Search Results
+    Given user has performed a search for "Smartphone"
+    When user applies filters for brand "Samsung" and price range "Rs. 10,000 - Rs. 20,000"
+    Then the search results should show Samsung smartphones within the specified price range
+
+  Scenario: Check Product Details
+    Given user has searched for "Laptop"
+    When user clicks on a specific laptop from the search results
+    Then user should see detailed product information including specifications and customer reviews
+
+  Scenario: Add Item to Wishlist
+    Given user is viewing a product page for "Wireless Earbuds"
+    When user clicks on the "Add to Wish List" button
+    Then the item should be added to the user's wish list
+
+  Scenario: Compare Products
+    Given user has searched for "Smart TV"
+    When user selects two different Smart TV models to compare
+    Then user should see a side-by-side comparison of the selected TV models
+
+  Scenario: Check Order Status
+    Given user is logged into their Amazon account
+    When user navigates to the "Your Orders" page
+    Then user should see a list of recent orders with their current status

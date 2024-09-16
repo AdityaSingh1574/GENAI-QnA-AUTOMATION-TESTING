@@ -1,0 +1,146 @@
+{
+  "Feature": "Amazon Shopping Experience",
+  "Description": "This feature allows users to search for products, add them to the cart, and navigate through the Amazon website.",
+  "Scenarios": [
+    {
+      "Scenario": "Search and Add to Cart",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user is on the Amazon homepage",
+          "xpath": "//a[@id='nav-logo-sprites']"
+        },
+        {
+          "StepType": "When",
+          "Description": "user searches for \"Book\" in the search box",
+          "xpath": "//input[@id='twotabsearchtextbox']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks on the first search result",
+          "xpath": "(//div[@data-component-type='s-search-result'])[1]//h2/a"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks on the \"Add to Cart\" button",
+          "xpath": "//input[@id='add-to-cart-button']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the item should be added to the cart",
+          "xpath": "//div[@id='nav-cart-count-container']"
+        }
+      ]
+    },
+    {
+      "Scenario": "List Search Results",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user is on the Amazon homepage",
+          "xpath": "//a[@id='nav-logo-sprites']"
+        },
+        {
+          "StepType": "When",
+          "Description": "user searches for \"Shoes\" in the search box",
+          "xpath": "//input[@id='twotabsearchtextbox']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "user should see a list of shoe products",
+          "xpath": "//div[@data-component-type='s-search-result']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user should be able to print the names of the listed products",
+          "xpath": "//div[@data-component-type='s-search-result']//h2/a/span"
+        }
+      ]
+    },
+    {
+      "Scenario": "Scroll Page",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user is on the Amazon homepage",
+          "xpath": "//a[@id='nav-logo-sprites']"
+        },
+        {
+          "StepType": "When",
+          "Description": "user scrolls down to the end of the page",
+          "xpath": "//div[@id='navFooter']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "user should see the footer of the page",
+          "xpath": "//div[@id='navFooter']"
+        },
+        {
+          "StepType": "When",
+          "Description": "user scrolls back to the top of the page",
+          "xpath": "//a[@id='nav-logo-sprites']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "user should see the Amazon logo and search bar",
+          "xpath": "//a[@id='nav-logo-sprites'] | //input[@id='twotabsearchtextbox']"
+        }
+      ]
+    },
+    {
+      "Scenario": "Select Category from Dropdown",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user is on the Amazon homepage",
+          "xpath": "//a[@id='nav-logo-sprites']"
+        },
+        {
+          "StepType": "When",
+          "Description": "user clicks on the category dropdown",
+          "xpath": "//select[@id='searchDropdownBox']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects \"Books\" from the dropdown",
+          "xpath": "//select[@id='searchDropdownBox']/option[text()='Books']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user performs a search",
+          "xpath": "//input[@value='Go']"
+        },
+        {
+          "StepType": "Then",
+          "Description": "user should see search results filtered for books",
+          "xpath": "//div[@data-component-type='s-search-result']"
+        }
+      ]
+    },
+    {
+      "Scenario": "Change Language",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user is on the Amazon homepage",
+          "xpath": "//a[@id='nav-logo-sprites']"
+        },
+        {
+          "StepType": "When",
+          "Description": "user clicks on the language selection option",
+          "xpath": "//a[@id='icp-nav-flyout']"
+        },
+        {
+          "StepType": "And",
+          "Description": "user selects \"Hindi\" as the preferred language",
+          "xpath": "//a[contains(@href,'language=hi_IN')]"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the website should be displayed in Hindi",
+          "xpath": "//span[contains(@class, 'icp-nav-language') and contains(text(), 'HI')]"
+        }
+      ]
+    }
+  ]
+}

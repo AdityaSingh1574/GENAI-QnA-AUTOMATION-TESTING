@@ -1,0 +1,459 @@
+{
+  "Feature": "Admin View - User management",
+  "Description": "This feature covers the user management functionality in the Admin View of the helpdesk system.",
+  "Scenarios": [
+    {
+      "Scenario": "Add and remove a member in support team",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "Open 'Support Team' header"
+        },
+        {
+          "StepType": "When",
+          "Description": "Add new member '{user}' in support team having dept '{dept}' and role '{role}'"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if member '{user}' is added with dept '{dept}' and role '{role}'"
+        },
+        {
+          "StepType": "And",
+          "Description": "Delete the newly added user"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if user '{user}' is removed from support team"
+        }
+      ]
+    },
+    {
+      "Scenario": "Add user to support team with having a role assigned already",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "Open 'Support Team' header"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if existing user can be added"
+        }
+      ]
+    },
+    {
+      "Scenario": "Select filters for Support team",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "Open 'Support Team' header"
+        },
+        {
+          "StepType": "When",
+          "Description": "Select '{filters}' from the Filter box"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if displayed '{type}' rows contains '{filters}' added filters"
+        }
+      ]
+    },
+    {
+      "Scenario": "Clear selected filters in filter box",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "Open 'Support Team' header"
+        },
+        {
+          "StepType": "And",
+          "Description": "Select 'IT;Support L1;Support L2' from the Filter box"
+        },
+        {
+          "StepType": "When",
+          "Description": "Click on 'Clear all' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Check if all applied filters get deselected"
+        }
+      ]
+    },
+    {
+      "Scenario": "Verify Rows per page for Support Team Tab",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "User click on the Support Team header"
+        },
+        {
+          "StepType": "When",
+          "Description": "User select 5 from Rows per page dropdown"
+        },
+        {
+          "StepType": "Then",
+          "Description": "User verifies the Rows per page as 5 functionality is working for Support Team Tab"
+        },
+        {
+          "StepType": "When",
+          "Description": "User select 10 from Rows per page dropdown"
+        },
+        {
+          "StepType": "Then",
+          "Description": "User verifies the Rows per page as 10 functionality is working for Support Team Tab"
+        },
+        {
+          "StepType": "When",
+          "Description": "User select 25 from Rows per page dropdown"
+        },
+        {
+          "StepType": "Then",
+          "Description": "User verifies the Rows per page as 25 functionality is working for Support Team Tab"
+        }
+      ]
+    },
+    {
+      "Scenario": "Verify Next/Previous Button functionalities",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "User click on the Support Team header"
+        },
+        {
+          "StepType": "Then",
+          "Description": "User verifies the navigation buttons on the page"
+        }
+      ]
+    },
+    {
+      "Scenario": "Verify that Category is not added if mandatory fields are empty",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "User click on the Category & Sub-category header"
+        },
+        {
+          "StepType": "When",
+          "Description": "User click on Add New Category button"
+        },
+        {
+          "StepType": "And",
+          "Description": "User submits the form"
+        },
+        {
+          "StepType": "Then",
+          "Description": "User verifies that new category is not added expectedly"
+        }
+      ]
+    },
+    {
+      "Scenario": "Verify Add new category modal collapse by clicking on cancel icon",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "User click on the Category & Sub-category header"
+        },
+        {
+          "StepType": "When",
+          "Description": "User click on Add New Category button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "User verifies if Add Category & Sub-category modal box appears"
+        },
+        {
+          "StepType": "And",
+          "Description": "User clicks on cancel button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "User verifies that Add Category & Sub-category modal box should be disappeared"
+        }
+      ]
+    },
+    {
+      "Scenario": "Verify the 'Add New Category' functionality followed by Toggle State functionality",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "User click on the Category & Sub-category header"
+        },
+        {
+          "StepType": "When",
+          "Description": "User click on Add New Category button"
+        },
+        {
+          "StepType": "And",
+          "Description": "User selects the category department as IT, Category name as Testing_HD, and Sub-Category name as Testing_HD_1"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify that the Testing_HD category is added successfully for IT department, Testing_HD_1 Sub-Category"
+        },
+        {
+          "StepType": "When",
+          "Description": "Open 'User Management' tab"
+        },
+        {
+          "StepType": "And",
+          "Description": "User click on the Category & Sub-category header"
+        },
+        {
+          "StepType": "And",
+          "Description": "Switch the Toggle to Disabled and verify that the Testing_HD category is added successfully for IT department, Testing_HD_1 Sub-Category"
+        },
+        {
+          "StepType": "When",
+          "Description": "Open 'User Management' tab"
+        },
+        {
+          "StepType": "And",
+          "Description": "User click on the Category & Sub-category header"
+        },
+        {
+          "StepType": "Then",
+          "Description": "User delete the new added Testing_HD category and verifies it"
+        }
+      ]
+    },
+    {
+      "Scenario": "Verify the Edit category & sub-category functionality",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "User click on the Category & Sub-category header"
+        },
+        {
+          "StepType": "When",
+          "Description": "User click on Add New Category button"
+        },
+        {
+          "StepType": "And",
+          "Description": "User selects the category department as IT, Category name as Testing_HD, and Sub-Category name as Testing_HD_1"
+        },
+        {
+          "StepType": "And",
+          "Description": "Verify that the Testing_HD category is added successfully for IT department, Testing_HD_1 Sub-Category"
+        },
+        {
+          "StepType": "When",
+          "Description": "Open 'User Management' tab"
+        },
+        {
+          "StepType": "And",
+          "Description": "User click on the Category & Sub-category header"
+        },
+        {
+          "StepType": "When",
+          "Description": "User click on Edit button from action button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "User changes the category department as HR, Category name as Testing_HD_Updated, and Sub-Category name as Testing_HD_1_New and verifies it"
+        }
+      ]
+    },
+    {
+      "Scenario": "Check if all headers are present in User management tab",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "Verify if 'Support Team;Department;VIP;Category & Sub-category' header is present"
+        }
+      ]
+    },
+    {
+      "Scenario": "Toggle button to add departments",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "Click on 'Department' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if toggle button is 'off' for major departments"
+        },
+        {
+          "StepType": "When",
+          "Description": "Click on toggle button for '{department}' department"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Check if toggle changes are been reflected on '{department}' department"
+        },
+        {
+          "StepType": "And",
+          "Description": "Click on 'User Management' button"
+        },
+        {
+          "StepType": "And",
+          "Description": "Click on 'Department' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if toggle button is 'on' for major departments"
+        }
+      ]
+    },
+    {
+      "Scenario": "Add new department",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "Click on 'Department' button"
+        },
+        {
+          "StepType": "When",
+          "Description": "Click on 'Add New Department' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if 'Add New Department' modal appears"
+        },
+        {
+          "StepType": "And",
+          "Description": "Enter 'QA6' as department name"
+        },
+        {
+          "StepType": "And",
+          "Description": "Select 'Jasleen Kaur Multani;Prince Raj;Swati Shukla' from the support dropdowns"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if the 'QA6' department is added successfully"
+        }
+      ]
+    },
+    {
+      "Scenario": "Check if VIPs list is present in VIP section",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "Click on 'User Management' button"
+        },
+        {
+          "StepType": "And",
+          "Description": "Click on 'VIP' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Check if only VIPs are present in VIP tab"
+        }
+      ]
+    },
+    {
+      "Scenario": "Add a new VIP",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "Click on 'User Management' button"
+        },
+        {
+          "StepType": "And",
+          "Description": "Click on 'VIP' button"
+        },
+        {
+          "StepType": "When",
+          "Description": "Click on 'Add VIP' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if 'Add VIP' modal appears"
+        },
+        {
+          "StepType": "And",
+          "Description": "Search 'Sachin Chand' and add as VIP"
+        },
+        {
+          "StepType": "And",
+          "Description": "Click on Add button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Check if 'Sachin Chand' is added as a new VIP"
+        }
+      ]
+    },
+    {
+      "Scenario": "Verify the functionality of 'Add New Group' and 'Delete Assignment Group'",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "User click on the Assignment Group header"
+        },
+        {
+          "StepType": "When",
+          "Description": "User click on Add New Group button"
+        },
+        {
+          "StepType": "And",
+          "Description": "User selects department as Accounts, Assignment Group as TESTING123, Group Description as Testing"
+        },
+        {
+          "StepType": "And",
+          "Description": "User select group member as Satyam Saraswat from the dropdown"
+        },
+        {
+          "StepType": "Then",
+          "Description": "User clicks on Submit button and verify the functionality"
+        },
+        {
+          "StepType": "And",
+          "Description": "User clicks on delete button from action"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if TESTING123 is deleted or not"
+        }
+      ]
+    },
+    {
+      "Scenario": "Verify Edit Assignment Group functionality",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "User click on the Assignment Group header"
+        },
+        {
+          "StepType": "When",
+          "Description": "User click on Add New Group button"
+        },
+        {
+          "StepType": "And",
+          "Description": "User selects department as Accounts, Assignment Group as TESTING123, Group Description as Testing"
+        },
+        {
+          "StepType": "And",
+          "Description": "User select group member as Satyam Saraswat from the dropdown"
+        },
+        {
+          "StepType": "Then",
+          "Description": "User clicks on Submit button and verify the functionality"
+        },
+        {
+          "StepType": "Given",
+          "Description": "Open 'User Management' tab"
+        },
+        {
+          "StepType": "When",
+          "Description": "Open 'Assignment Group' header"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Open edit modal box for assignment group"
+        },
+        {
+          "StepType": "And",
+          "Description": "Change assignment group name to 'Change' and verify"
+        },
+        {
+          "StepType": "And",
+          "Description": "User clicks on delete button from action"
+        },
+        {
+          "StepType": "Then",
+          "Description": "Verify if TESTING123 is deleted or not"
+        }
+      ]
+    }
+  ]
+}

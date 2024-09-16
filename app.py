@@ -69,116 +69,314 @@ interpreter.llm.execution_instructions = """You need to follow these instruction
 # interpreter.chat("Visit https://www.myntra.com and extract the feature name and their descriptions and save them in a txt file in the current directory")
 
 
-interpreter.chat(""" visit the url : https://www.amazon.in/  and understand the given user stories below:
+# interpreter.chat(""" visit the URL: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_form_steps  and understand the given user stories below:
 
-  Feature: Add Books in the cart from Amazon
 
-   Scenario Outline: Search <SearchOption> From Amazon website
-     Given user Search <SearchOption> in the Search Box
-     And user add First <SearchOption> in the cart
-     When user add item to the cart
-     Examples:
-       | SearchOption |
-       | Book         |
-       | Shoes        |
-       | makeup       |
-       | pen          |
-       | NoteBook     |
-       | Dress        |
-       | Tops         |
-       | Jeans        |
-       | Suits        |
+# Feature: MultiSteps Form-> Automating the form and adding ScreenShot and ScreenRecording
 
-   Scenario Outline: List down the Options of First Page
-     Given user Search <SearchOption> in the Search Box
-     Then user list and prints the name of the searchOption
-     Examples:
-       | SearchOption |
-       | Book         |
-       | Shoes        |
-       | makeup       |
-       | pen          |
-       | NoteBook     |
-       | Dress        |
-       | Tops         |
-       | Jeans        |
-       | Tshirt       |
-       | Suits        |
+#   Scenario: User Fills and Complete the multi step form
+#     Given user opens the multiStepForm
+#     When user fills in the field
+#       | firstName   | 'First name' |
+#       | lastName    | 'Last name'  |
+#       | email       | 'E-mail'     |
+#       | phoneNumber | 'Phone'      |
+#       | birthDate   | 'dd'         |
+#       | birthMonth  | 'mm'         |
+#       | birthYear   | 'yyyy'       |
+#       | username    | 'Username'   |
+#       | password    | 'Password'   |   
+#  ---------------------------------------------------               
 
-   Scenario: Scroll Down to the end of the Page and back to the top
-     Given user scroll down to the end of the page
-     Then user comes back to the top
+# Your task is to create a gherkin file which includes all the scenarios possible for the given feature.Consider the given below notes for the task.
+# 1. To create gherkin file 'Feature' field and 'Description' field will be given.You will add all possible scenarios with steps.
+# 2.Each scenario should be structured with 'Given', 'When', and 'Then' steps. 
 
-   Scenario Outline: selects different options from the dropdown and search the options
-     Given user clicks on the dropdown
-     When user selects "<Option>" from the dropdown
-     Examples:
-       | Option                  |
-       | All Categories          |
-       | Alexa Skills            |
-       | Amazon Devices          |
-       | Amazon Fashion          |
-       | Amazon Fresh            |
-       | Amazon Fresh Meat       |
-       | Amazon Pharmacy         |
-       | Appliances              |
-       | Apps & Games            |
-       | Audible Audiobooks      |
-       | Baby                    |
-       | Beauty                  |
-       | Books                   |
-       | Car & Motorbike         |
-       | Clothing & Accessories  |
-       | Collectibles            |
-       | Computers & Accessories |
-       | Deals                   |
-       | Electronics             |
-       | Furniture               |
-       | Garden & Outdoors       |
-       | Gift Cards              |
-       | Grocery & Gourmet Foods |
-       | Health & Personal Care  |
-       | Home & Kitchen          |
-       | Industrial & Scientific |
-       | Jewellery               |
-       | Kindle Store            |
-       | Luggage & Bags          |
-       | Luxury Beauty           |
-       | Movies & TV Shows       |
-       | MP3 Music               |
-       | Musical Instruments     |
-       | Office Products         |
-       | Pet Supplies            |
-
-     Scenario: Select the suitable language
-       Given user opens the language tab
-       Then user selects the language
+# The OUTPUT JSON structure of the Gherkin file should follow the given below format:
+# {{
+#   "Feature": "{Feature}",
+#   "Description": "{description}",
+#   "Scenarios": [
+#     {{
+#       "Scenario": "<Scenario name>",
+#       "Steps": [
+#         {{
+#           "StepType": "Given/When/Then",
+#           "Description": "<Step description>"
+#         }}
+#       ]
+#     }}
+#   ]
+# }}
+                                  
+# and save the gherkin file in json format in the same folder as "w3school.json" 
                  
+# """)
 
-Your task is to create a gherkin file which includes all the scenarios possible for the given feature.Consider the given below notes for the task.
-1.Each scenario should be structured with 'Given', 'When', and 'Then' steps. 
-2. Each Step Description should contain one of the suitable examples if possible .
 
-The OUTPUT JSON structure of the Gherkin file should follow the given below format:
-{{
-  "Feature": "<give name to this feature>",
-  "Description": "<describe the feature can also be considered as background >",
+
+
+
+interpreter.chat("""visit the URL: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_form_steps
+   and understand the given gherkin file in json format. 
+-------------------
+Gherkin File is given below in json format:
+{
+  "Feature": "MultiSteps Form",
+  "Description": "Automating the form and adding ScreenShot and ScreenRecording",
   "Scenarios": [
+    {
+      "Scenario": "User successfully completes the multi-step form",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm"
+        },
+        {
+          "StepType": "When",
+          "Description": "user fills in the 'First name' field"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'Last name' field"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'E-mail' field"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'Phone' field"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'dd' field for birth date"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'mm' field for birth month"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'yyyy' field for birth year"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'Username' field"
+        },
+        {
+          "StepType": "And",
+          "Description": "user fills in the 'Password' field"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Submit' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the form should be successfully submitted"
+        },
+        {
+          "StepType": "And",
+          "Description": "a confirmation message should be displayed"
+        }
+      ]
+    },
+    {
+      "Scenario": "User navigates through the form steps",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm"
+        },
+        {
+          "StepType": "When",
+          "Description": "user clicks the 'Next' button on the first step"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the second step of the form should be displayed"
+        },
+        {
+          "StepType": "When",
+          "Description": "user clicks the 'Next' button on the second step"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the third step of the form should be displayed"
+        },
+        {
+          "StepType": "When",
+          "Description": "user clicks the 'Previous' button on the third step"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the second step of the form should be displayed"
+        }
+      ]
+    },
+    {
+      "Scenario": "User attempts to submit the form with missing information",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm"
+        },
+        {
+          "StepType": "When",
+          "Description": "user leaves the 'First name' field empty"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "an error message should be displayed"
+        },
+        {
+          "StepType": "And",
+          "Description": "the form should not proceed to the next step"
+        }
+      ]
+    },
+    {
+      "Scenario": "User enters invalid email format",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm"
+        },
+        {
+          "StepType": "When",
+          "Description": "user enters an invalid email format in the 'E-mail' field"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "an error message should be displayed"
+        },
+        {
+          "StepType": "And",
+          "Description": "the form should not proceed to the next step"
+        }
+      ]
+    },
+    {
+      "Scenario": "User enters invalid date format",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm"
+        },
+        {
+          "StepType": "And",
+          "Description": "user is on the second step of the form"
+        },
+        {
+          "StepType": "When",
+          "Description": "user enters an invalid date format in the 'dd', 'mm', or 'yyyy' fields"
+        },
+        {
+          "StepType": "And",
+          "Description": "user clicks the 'Next' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "an error message should be displayed"
+        },
+        {
+          "StepType": "And",
+          "Description": "the form should not proceed to the next step"
+        }
+      ]
+    },
+    {
+      "Scenario": "User cancels form submission",
+      "Steps": [
+        {
+          "StepType": "Given",
+          "Description": "user opens the multiStepForm"
+        },
+        {
+          "StepType": "And",
+          "Description": "user has filled in some information"
+        },
+        {
+          "StepType": "When",
+          "Description": "user clicks the 'Cancel' button"
+        },
+        {
+          "StepType": "Then",
+          "Description": "the form should be reset"
+        },
+        {
+          "StepType": "And",
+          "Description": "user should be returned to the first step"
+        }
+      ]
+    }
+  ]
+}
+-------------------------------------
+You are given a Gherkin file that describes various scenarios for interacting with a website. Your task is to generate the corresponding XPath expressions for each step described in the Gherkin scenarios.
+Your task is given below:
+For each step in the Gherkin scenarios, generate the corresponding XPath expressions that could be used to interact with the elements on a typical website. The website could be an e-commerce site or any other type of site.
+ 
+some general instruction for generating xpath :
+Identify the corresponding input field in case of some input.
+ locate the button or action item in case of action.
+Ensure the XPaths are specific enough to uniquely identify elements
+return JSON OUTPUT format as given below which will be an extension of a field 'xpath' in the given below format :
+{{
+     
+         "Scenarios": [
     {{
-      "Scenario": "<Scenario name>",
+      "Scenario": "Search and Add to Cart",
       "Steps": [
         {{
-          "StepType": "Given/When/Then",
-          "Description": "<Step description>"
-        }}
+          "StepType": "Given",
+          "Description": "user is on the Amazon homepage"
+            "xpath":"<corrosponding xpath>"
+ 
+
+        }},
+        
+      
       ]
-    }}
-  ]
+    }},
 }}
-                                  
-and save the gherkin file in the same folder 
-                 
+ 
+ return JSON OUTPUT and save in a file as 'w3school_with_xpath.json'
+
+
 """)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # interpreter.chat("use the filepath : C:\\Users\\aditya.singh1\\Desktop\\GEN-AI-AUTO\\GENAI-QnA-AUTOMATION-TESTING\\input_images\\flipkart_lading_page.png and show the image using code, save the code once done")
 # LEVEL 01 EXAMPLES
