@@ -1,6 +1,7 @@
 from interpreter import interpreter
 from dotenv import load_dotenv
 import os
+import json
 load_dotenv()
 
 
@@ -38,36 +39,35 @@ interpreter.llm.temperature = 0.1
 # """
 
 interpreter.chat("""
-Feature: Add Items to Cart on https://www.amazon.in
-As a user, I want to search for various items on Amazon and add them to my cart
+Feature: Select preferable language on Amazon at https://www.amazon.in/
+  As a user, I want to select my preferred language on Amazon
 
-Scenario: Search and Add Book to Cart
-Given user is on the Amazon homepage
-When user searches for 'Book' in the search box
-And user selects the first 'Book' from the search results
-And user clicks on 'Add to Cart' button
-Then the 'Book' should be added to the user's cart
-And the cart count should increase by 1
+  Scenario: Select English as the preferred language
+    Given user opens the language tab on Amazon homepage
+    When user selects "English" from the language options
+    Then the website should display in English language
+    And user preferences should be updated to English
 
-Scenario: Search and Add Shoes to Cart
-Given user is on the Amazon homepage
-When user searches for 'Shoes' in the search box
-And user selects the first 'Shoes' from the search results
-And user selects the desired size and color
-And user clicks on 'Add to Cart' button
-Then the 'Shoes' should be added to the user's cart
-And the cart count should increase by 1              
+  Scenario: Select Hindi as the preferred language
+    Given user opens the language tab on Amazon homepage
+    When user selects "Hindi" from the language options
+    Then the website should display in Hindi language
+    And user preferences should be updated to Hindi         
 
 For the above mentioned text of Feature file generate a step definition file in python.
 Step definition file can be defined as follows : Python files that define the implementation of the steps described in the feature files
 
+
+Make use of the file `amazon_language_selection.json` file in the current directory for getting the locators on the webpage 
+
 Follow the below instructions for completing the task
-1. Go through and understand the text of the feature file and understand the steps to be done for the same
+1. Go through and understand the text of the feature file to comprehend the steps that need to be implemented.
 2. Step definition file will contain the Python code that defines the steps for the feature file text
 3. Implement the steps in python using the libraries : behave, selenium, chromedriver
-4. take a screen shot of every page you visit and using the screen shot select elements to perform action, save the screen shot for reference 
+4. Take a screenshot of every page you visit. Use these screenshots to select elements for performing actions. Save the screenshots for reference.
 5. Run `behave` in the terminal for running the step definition file
-                 
+
+
 Use the following steps in order to verify if the step definition file is properly implemented or not
 Check the Output:
 1. Behave will execute the scenario(s) in your feature file and print the output to the console.
@@ -78,6 +78,5 @@ Important instructions:
 1. assume selenium and behave to be pre-installed
 2. assume chromedriver is present in the current directory
 3. while making feature file use python script and not terminal commands
-
 """)
 
