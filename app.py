@@ -40,25 +40,40 @@ interpreter.llm.temperature = 0.1
 
 interpreter.chat("""
 Feature: Select preferable language on Amazon at https://www.amazon.in/
-  As a user, I want to select my preferred language on Amazon
+As a user, I want to select my preferred language on Amazon
 
-  Scenario: Select English as the preferred language
-    Given user opens the language tab on Amazon homepage
-    When user selects "English" from the language options
-    Then the website should display in English language
-    And user preferences should be updated to English
+Scenario: Select English as the preferred language
+Given user opens the language tab on Amazon homepage
+When user selects "English" from the language options
+Then the website should display in English language
+And user preferences should be updated to English
 
-  Scenario: Select Hindi as the preferred language
-    Given user opens the language tab on Amazon homepage
-    When user selects "Hindi" from the language options
-    Then the website should display in Hindi language
-    And user preferences should be updated to Hindi         
+Scenario: Select Hindi as the preferred language
+Given user opens the language tab on Amazon homepage
+When user selects "Hindi" from the language options
+Then the website should display in Hindi language
+And user preferences should be updated to Hindi
+
 
 For the above mentioned text of Feature file generate a step definition file in python.
 Step definition file can be defined as follows : Python files that define the implementation of the steps described in the feature files
 
+Make use of the following JSON for getting the locators on the webpage 
 
-Make use of the file `amazon_language_selection.json` file in the current directory for getting the locators on the webpage 
+{
+  "search_box": {
+    "by": "ID",
+    "value": "twotabsearchtextbox"
+  },
+  "search_button": {
+    "by": "ID",
+    "value": "nav-search-submit-button"
+  },
+  "search_results": {
+    "by": "CSS_SELECTOR",
+    "value": "div.s-result-item h2 a.a-link-normal"
+  }
+}
 
 Follow the below instructions for completing the task
 1. Go through and understand the text of the feature file to comprehend the steps that need to be implemented.
