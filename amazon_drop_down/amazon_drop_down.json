@@ -1,0 +1,5 @@
+{
+ "main_drop_down" : "//*[@id="nav-search-dropdown-card"]/div",
+ "alexa_skills" : "//*[@id="searchDropdownBox"]/option[2]",
+ "amazon_fashion" : "//*[@id="searchDropdownBox"]/option[1]"
+}

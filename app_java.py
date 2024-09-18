@@ -50,69 +50,124 @@ interpreter.llm.temperature = 0.1
 
 # """)
 
-# interpreter.chat("""
-# Feature: Add Books in the cart from Amazon on https://www.amazon.in/
-# As a user, I want to select my preferred language on Amazon
-
-# Scenario: Select English as the preferred language
-# Given user opens the language tab on Amazon homepage
-# When user selects "English" from the language options
-# Then the website should display in English language
-# And user preferences should be updated to English
-
-# Scenario: Select Hindi as the preferred language
-# Given user opens the language tab on Amazon homepage
-# When user selects "Hindi" from the language options
-# Then the website should display in Hindi language
-# And user preferences should be updated to Hindi
 
 
-# follow the instructions in order to complete the task:
-# 1. First, make sure you have a Maven or Gradle project set up with the following dependencies Cucumber Java, Cucumber JUnit, Selenium Java, JUnit and more if required
-# 2. Generate the pom.xml  for the maven project
-# 3. generate the proper directory structure for the maven project and generate all the files required
-# 4. generate the code for the entire project including all the files, test the generated code by running the main file and debug it if required
-# 5. Use a simple python script in order to save the code in the current directory do not make use of the terminal to save the file.
+# locator file
+interpreter.chat("""
+The following is a JSON between `---XPATH-START---` and `---XPATH-END---` which contains Xpaths for elements in a website
+---XPATH-START---
+{
+    "search_bar" : "//*[@id="twotabsearchtextbox"]",
+    "search_button" : "//*[@id="nav-search-submit-button"]",
+    "search_result_1" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[3]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
+    "search_result_2" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[4]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
+    "search_result_3" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[5]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
+    "search_result_4" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[6]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
+    "search_result_5" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[7]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span"
+}
+---XPATH-END---
+
+Your task is to generate a `Locator.java` file and save it to the current directory
+An Example of the locator file is as follows:
+
+package locators;
+public class Locators {{
+    public static By loginButton = By.xpath("//span[text()='Login with Gemini mail!']");
+    public static By firstName = By.xpath("//input[contains(@class,'first-name')]");
+    public static String textField = "//input[@id='email']";
+}}
+
+Important instructions:
+1. Add necessary import statements. 
+
+When the Locators file is created save it the current directory using a python script
+""")
+                
+
+interpreter.chat("""
+---FEATURE-FILE-START---
+
+Feature: List Search Options on Amazon India
+As a user, I want to search for various items on Amazon India and list the search results
+
+Scenario: Search and List Books
+Given user is on the Amazon India homepage
+When user searches for 'Book' in the search box
+And  user clicks the search button
+Then user should see a results page listing 'Books'
+And user prints the names of first 5 'Book' results
+
+Scenario: Search and List Shoes
+Given user is on the Amazon India homepage
+When user searches for 'Shoes' in the search box
+And  user clicks the search button
+Then user should see a results page listing 'Shoes'
+And user prints the names of first 5 'Shoes' results
+
+---FEATURE-FILE-END---
+
+the feature file is given between `---FEATURE-FILE-START---` and `---FEATURE-FILE-END---`
+Your task will be to implement the step definition file using the above given feature file text in JAVA
+
+You can use the following instructions for generating step definition and implementation files
+1. Go through and understand the text of the feature file to comprehend the steps that need to be implemented.
+2. Step definition file will contain the Python code that defines the steps for the feature file text 
+3. the implementation file will contain the actual implementation of the test case / feature file containing the imports from step definition file.
+4. Divide feature file big task into small steps / tasks and implement the functions for getting the steps done
+5. When done save the file in the current directory using a simple  python script
+
+use the following as locators as Xpaths for implementing the step definition file for accessing the element 
+The Xpaths are given between `---XPATH-START---` and `---XPATH-END---`
+
+---XPATH-START---
+{
+    "search_bar" : "//*[@id="twotabsearchtextbox"]",
+    "search_button" : "//*[@id="nav-search-submit-button"]",
+    "search_result_1" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[3]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
+    "search_result_2" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[4]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
+    "search_result_3" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[5]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
+    "search_result_4" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[6]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
+    "search_result_5" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[7]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span"
+}
+---XPATH-END---
+
+
+The following can be used as an example for a step definition file
+package stepdefinitions;
+import implementation.Implementation;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
+
+public class StepDefinition {{
+    public Implementation implementation = new Implementation();
+
+    @Given("the user is on the home page")
+    public void launchUrl(){{
+        implementation.launchUrl(url);
+    }}
+
+    @When("the user clicks on login button")
+        public void userClicksOnLoginButton() {{
+            implementation.clickOnLoginButton();
+    }}
+
+    @Then("username and password fields should appear")
+        public void verifyLoginWindowAppears() {{
+            implementation.verifyLoginElements();
+    }}
+
+    @Then("close the browser")
+    public void closeBrowser(){{
+        implementation.closeBrowser();
+    }}
+}}
 
 # Important instructions:
-# 1. chrome driver is present in the current directory and the path to the chrome driver is as follows : `chromedriver.exe`
-# 2. use the xpaths only for accessing the elements on the webpage
-# 3. use the json file with the name `amazon.json` in the current directory for getting the xpaths of the required elements
-          
-                 
-# package stepdefinitions;
-# import implementation.Implementation;
-# import io.cucumber.java.en.Given;
-# import io.cucumber.java.en.When;
-# import io.cucumber.java.en.Then;
-
-# public class StepDefinition {{
-#     public Implementation implementation = new Implementation();
-
-#     @Given("the user is on the home page")
-#     public void launchUrl(){{
-#         implementation.launchUrl(url);
-#     }}
-
-#     @When("the user clicks on login button")
-#         public void userClicksOnLoginButton() {{
-#             implementation.clickOnLoginButton();
-#     }}
-
-#     @Then("username and password fields should appear")
-#         public void verifyLoginWindowAppears() {{
-#             implementation.verifyLoginElements();
-#     }}
-
-#     @Then("close the browser")
-#     public void closeBrowser(){{
-#         implementation.closeBrowser();
-#     }}
-# }}
-
-# Important points:
-# 1. The above code is just an example.
-# 2. Ensure the step definition file contains launchUrl and closeBrowser methods.
+# 1. Save the code for the implementation and step definition files using a simple python script, do not use terminal for writing in files.
+# 2. The Xpaths given are accurate hence do not generate on your own
+# 3. Do not use chromedriver.exe for accessing the browser instead use WebDriverManager library for the same. 
+# 4. Ensure the step definition file contains launchUrl and closeBrowser methods.
 #     @Given("the user is on the home page")
 #     public void launchUrl(){{
 #         String url = ""; // give the URL here that you want to launch
@@ -123,6 +178,58 @@ interpreter.llm.temperature = 0.1
 #     public void closeBrowser(){{
 #         implementation.closeBrowser();
 #     }}
+
+# """)
+
+
+
+
+# interpreter.chat("""
+# Feature: Add Items to Cart on https://www.amazon.in
+# As a user, I want to search for various items on Amazon and add them to my cart
+
+# Scenario: Search and Add Book to Cart
+# Given user is on the Amazon homepage
+# When user searches for 'Book' in the search box
+# And user selects the first 'Book' from the search results
+# And user clicks on 'Add to Cart' button
+# Then the 'Book' should be added to the user's cart
+# And the cart count should increase by 1
+
+# Scenario: Search and Add Shoes to Cart
+# Given user is on the Amazon homepage
+# When user searches for 'Shoes' in the search box
+# And user selects the first 'Shoes' from the search results
+# And user selects the desired size and color
+# And user clicks on 'Add to Cart' button
+# Then the 'Shoes' should be added to the user's cart
+# And the cart count should increase by 1
+
+
+
+# follow the instructions in order to complete the task:
+# 1. Go through the feature file above and identify the names of the elements on which the actions are to be performed, to implement the locator file
+# 2. Identify the steps that are to be done for the task to get completed, using this implement the step definition file
+# 3. divide single task into sub tasks and generate the functions for completing the steps and hence generate the implementation file
+
+
+# use the following JSON for getting the xpaths of the required elements
+
+# {
+#     "search_bar" : "//*[@id="twotabsearchtextbox"]",
+#     "search_button" : "//*[@id="nav-search-submit-button"]",
+#     "first_search_result" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[3]/div/div/div/div/span/div/div/div/div[2]/div/div/div[1]/h2/a/span",
+#     "add_to_cart" : "//*[@id="add-to-cart-button"]",
+#     "cart_counter" : "//*[@id="nav-cart-count"]"
+# }
+
+
+# Important instructions:
+# 1. chrome driver is present in the current directory and the path to the chrome driver is as follows : `chromedriver.exe`
+# 2. use the xpaths only for accessing the elements on the webpage
+# 3. implement all the steps in all the files, do not leave for the user to implement it
+
+
 # """)
 
 
