@@ -1,0 +1,21 @@
+Visit URL: https://www.ixigo.com/?utm_source=Google_Search&utm_medium=paid_search_google&utm_campaign=Ixigo_Brand&utm_source=google&utm_medium=paid_search_google&utm_campaign=ixigo_brand&gad_source=1&gclid=CjwKCAjw0aS3BhA3EiwAKaD2ZQQTxsZAdy0K8Z2WpYD1c0wi1_DH1V9fsn6r3PwlXCVpGcbQ7YAU7xoCeN0QAvD_BwE 
+
+Feature: ixigo Flight Booking for Cheapest Options
+
+  As a budget-conscious traveler
+  I want to search for and book the cheapest flights on ixigo
+  So that I can travel within my budget constraints
+
+  Background: 
+    Given the user is on the ixigo flight booking page
+
+  Scenario: Search and Select the cheapest flight with valid city names and dates
+    When the user enters "New Delhi" into the departure city field
+    And the user enters "Mumbai" into the arrival city field
+    And the user selects "2024-10-10" as the departure date
+    And the user clicks on the search button
+    Then a list of available flights from New Delhi to Mumbai on "2024-10-10" is displayed
+    When the user sorts the flights by price in ascending order
+    And the user selects the first flight listed as the cheapest option
+    And the user proceeds to book the selected cheapest flight
+    Then the booking confirmation page for the selected cheapest flight is displayed

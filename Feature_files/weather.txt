@@ -1,0 +1,16 @@
+Visit URL : https://www.accuweather.com/ 
+
+Feature: Checking Current Weather on AccuWeather by Typing Location
+
+  As a weather enthusiast
+  I want to type a location into AccuWeather and select from search results
+  So that I can view the current weather conditions for that location
+
+  Background: 
+    Given the user is on the AccuWeather homepage
+
+  Scenario: View current weather after typing and selecting a location
+    When the user types "New Delhi" into the location input field
+    And the user views the selection page with search results
+    And the user selects the first option the search results
+    Then the current weather for "New Delhi, India" is displayed on the screen
