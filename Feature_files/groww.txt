@@ -1,0 +1,17 @@
+ Visit URL : https://groww.in/calculators/sip-calculator
+
+
+Feature: SIP Calculator on Groww
+
+  As an investor
+  I want to use the SIP calculator on Groww
+  So that I can estimate the future value of my investments based on my monthly contributions, investment tenure, and expected returns
+
+  Background: 
+    Given the user is on the Groww SIP calculator page
+
+  Scenario: Calculate future values with valid inputs
+    When the user enters "5000" into the monthly contribution field
+    And the user enters "10" into the investment tenure field
+    And the user enters "12" into the expected annual returns field
+    Then the future values that is Investment amount, return and total amount of the investment is displayed
