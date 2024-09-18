@@ -1,0 +1,6 @@
+{
+    "langauge_changer_link" : "//*[@id="icp-nav-flyout"]",
+    "english_checkbox" : "//*[@id="icp-language-settings"]/div[2]/div/label/i",
+    "hindi_checkbox" : "//*[@id="icp-language-settings"]/div[3]/div/label/i",
+    "save_changes" : "//*[@id="icp-save-button"]/span/input"
+}

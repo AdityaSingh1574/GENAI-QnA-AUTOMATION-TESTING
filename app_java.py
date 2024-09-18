@@ -53,57 +53,54 @@ interpreter.llm.temperature = 0.1
 
 
 # locator file
-interpreter.chat("""
-The following is a JSON between `---XPATH-START---` and `---XPATH-END---` which contains Xpaths for elements in a website
----XPATH-START---
-{
-    "search_bar" : "//*[@id="twotabsearchtextbox"]",
-    "search_button" : "//*[@id="nav-search-submit-button"]",
-    "search_result_1" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[3]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
-    "search_result_2" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[4]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
-    "search_result_3" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[5]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
-    "search_result_4" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[6]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
-    "search_result_5" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[7]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span"
-}
----XPATH-END---
+# interpreter.chat("""
+# The following is a JSON between `---XPATH-START---` and `---XPATH-END---` which contains Xpaths for elements in a website
+# ---XPATH-START---
+# {
+#     "langauge_change_button" : "//*[@id="icp-nav-flyout"]",
+#     "english_checkbox" : "//*[@id="icp-language-settings"]/div[2]/div/label/i",
+#     "hindi_checkbox" : "//*[@id="icp-language-settings"]/div[3]/div/label/i",
+#     "save_changes" : "//*[@id="icp-save-button"]/span/input"
+# }
+# ---XPATH-END---
 
-Your task is to generate a `Locator.java` file and save it to the current directory
-An Example of the locator file is as follows:
+# Your task is to generate a `Locator.java` file and save it to the current directory
+# An Example of the locator file is as follows:
 
-package locators;
-public class Locators {{
-    public static By loginButton = By.xpath("//span[text()='Login with Gemini mail!']");
-    public static By firstName = By.xpath("//input[contains(@class,'first-name')]");
-    public static String textField = "//input[@id='email']";
-}}
+# package locators;
+# public class Locators {{
+#     public static By loginButton = By.xpath("//span[text()='Login with Gemini mail!']");
+#     public static By firstName = By.xpath("//input[contains(@class,'first-name')]");
+#     public static String textField = "//input[@id='email']";
+# }}
 
-Important instructions:
-1. Add necessary import statements. 
+# Important instructions:
+# 1. Add necessary import statements. 
 
-When the Locators file is created save it the current directory using a python script
-""")
+# When the Locators file is created save it the current directory using a python script
+# """)
                 
 
 interpreter.chat("""
 ---FEATURE-FILE-START---
 
-Feature: List Search Options on Amazon India
-As a user, I want to search for various items on Amazon India and list the search results
+Feature: Add Books in the cart from Amazon on https://www.amazon.in/
+As a user, I want to select my preferred language on Amazon
 
-Scenario: Search and List Books
-Given user is on the Amazon India homepage
-When user searches for 'Book' in the search box
-And  user clicks the search button
-Then user should see a results page listing 'Books'
-And user prints the names of first 5 'Book' results
+Scenario: Select English as the preferred language
+Given user opens Amazon homepage
+When user clicks on the "Change Language" button
+And a page opens for changing the language
+And user selects "English" from the language options
+And user clicks on the "Save Changes" button
 
-Scenario: Search and List Shoes
-Given user is on the Amazon India homepage
-When user searches for 'Shoes' in the search box
-And  user clicks the search button
-Then user should see a results page listing 'Shoes'
-And user prints the names of first 5 'Shoes' results
-
+Scenario: Select Hindi as the preferred language
+Given user opens Amazon homepage
+When user clicks on the "Change Language" button
+And a page opens for changing the language
+And user selects "Hindi" from the language options
+And user clicks on the "Save Changes" button
+    
 ---FEATURE-FILE-END---
 
 the feature file is given between `---FEATURE-FILE-START---` and `---FEATURE-FILE-END---`
@@ -114,6 +111,7 @@ You can use the following instructions for generating step definition and implem
 2. Step definition file will contain the Python code that defines the steps for the feature file text 
 3. the implementation file will contain the actual implementation of the test case / feature file containing the imports from step definition file.
 4. Divide feature file big task into small steps / tasks and implement the functions for getting the steps done
+5. Implement all the functions in the implementation and step definition files for completing the task
 5. When done save the file in the current directory using a simple  python script
 
 use the following as locators as Xpaths for implementing the step definition file for accessing the element 
@@ -121,13 +119,10 @@ The Xpaths are given between `---XPATH-START---` and `---XPATH-END---`
 
 ---XPATH-START---
 {
-    "search_bar" : "//*[@id="twotabsearchtextbox"]",
-    "search_button" : "//*[@id="nav-search-submit-button"]",
-    "search_result_1" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[3]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
-    "search_result_2" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[4]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
-    "search_result_3" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[5]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
-    "search_result_4" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[6]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span",
-    "search_result_5" : "//*[@id="search"]/div[1]/div[1]/div/span[1]/div[1]/div[7]/div/div/div/div/span/div/div/div[2]/div[2]/div[2]/h2/span"
+    "langauge_changer_link" : "//*[@id="icp-nav-flyout"]",
+    "english_checkbox" : "//*[@id="icp-language-settings"]/div[2]/div/label/i",
+    "hindi_checkbox" : "//*[@id="icp-language-settings"]/div[3]/div/label/i",
+    "save_changes" : "//*[@id="icp-save-button"]/span/input"
 }
 ---XPATH-END---
 
@@ -163,23 +158,23 @@ public class StepDefinition {{
     }}
 }}
 
-# Important instructions:
-# 1. Save the code for the implementation and step definition files using a simple python script, do not use terminal for writing in files.
-# 2. The Xpaths given are accurate hence do not generate on your own
-# 3. Do not use chromedriver.exe for accessing the browser instead use WebDriverManager library for the same. 
-# 4. Ensure the step definition file contains launchUrl and closeBrowser methods.
-#     @Given("the user is on the home page")
-#     public void launchUrl(){{
-#         String url = ""; // give the URL here that you want to launch
-#         implementation.launchUrl();
-#     }}
+Important instructions:
+1. Save the code for the implementation and step definition files using a simple python script, do not use terminal for writing in files.
+2. The Xpaths given are accurate hence do not generate on your own
+3. Do not use chromedriver.exe for accessing the browser instead use WebDriverManager library for the same. 
+4. Ensure the step definition file contains launchUrl and closeBrowser methods.
+    @Given("the user is on the home page")
+    public void launchUrl(){{
+        String url = ""; // give the URL here that you want to launch
+        implementation.launchUrl();
+    }}
 
-#     @Then("close the browser")
-#     public void closeBrowser(){{
-#         implementation.closeBrowser();
-#     }}
+    @Then("close the browser")
+    public void closeBrowser(){{
+        implementation.closeBrowser();
+    }}
 
-# """)
+""")
 
 
 
