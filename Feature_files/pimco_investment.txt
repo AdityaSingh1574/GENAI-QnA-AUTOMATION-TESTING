@@ -1,0 +1,18 @@
+Visit URL : https://www.pimco.com/gbl/en
+
+Feature: Search Investment Plan on PIMCO Website
+
+  As an investor
+  I want to search for investment plans on the PIMCO website
+  So that I can get details and summaries of different investment options
+
+  Background: 
+    Given the user is on the PIMCO Global Homepage
+
+  Scenario: Search and retrieve a summary of an investment plan
+    When the user enters "investment Plan" into the Search by Keyword field
+    And the user clicks the search button
+    Then the search results page with various investment Plans is displayed
+    When the user clicks on the first listed investment fund
+    Then the detail page of the investment fund is displayed
+    And the user can view a summary of the investment plan
