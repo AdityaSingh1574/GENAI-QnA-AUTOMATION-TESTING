@@ -1,0 +1,9 @@
+{
+    "Monthly investment":"//*[@id="MONTHLY_INVESTMENT"]",
+    "Expected return rate":"//*[@id="RETURN_RATE"]",
+    "time period":"//*[@id="TIME_PERIOD"]",
+    "Investment Amount":"//*[@id="root"]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[4]/div[1]/div[2]/span/span",
+    "Est. Return":"//*[@id="root"]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[4]/div[2]/div[2]/span/span",
+    "Total Value":"//*[@id="root"]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[4]/div[3]/div[2]/span/span",
+
+}

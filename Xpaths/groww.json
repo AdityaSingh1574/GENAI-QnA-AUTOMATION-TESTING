@@ -1,9 +1,0 @@
-{
-    "Monthly Amount":"//*[@id="MONTHLY_INVESTMENT"]",
-    "Return Rate":"//*[@id="RETURN_RATE"]",
-    "Tenure":"//*[@id="TIME_PERIOD"]",
-    "Investment Amount":"//*[@id="root"]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[4]/div[1]/div[2]/span/span",
-    "Return":"//*[@id="root"]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[4]/div[2]/div[2]/span/span",
-    "Total Value":"//*[@id="root"]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[4]/div[3]/div[2]/span/span",
-
-}

@@ -52,15 +52,14 @@ interpreter.llm.temperature = 0.1
 
 
 
-# locator file
+# # locator file
 # interpreter.chat("""
 # The following is a JSON between `---XPATH-START---` and `---XPATH-END---` which contains Xpaths for elements in a website
 # ---XPATH-START---
 # {
-#     "langauge_change_button" : "//*[@id="icp-nav-flyout"]",
-#     "english_checkbox" : "//*[@id="icp-language-settings"]/div[2]/div/label/i",
-#     "hindi_checkbox" : "//*[@id="icp-language-settings"]/div[3]/div/label/i",
-#     "save_changes" : "//*[@id="icp-save-button"]/span/input"
+#     "Input Location":"/html/body/div/div[1]/div[3]/div/div[1]/div[1]/form/input",
+#     "Select First Result":"/html/body/div/div[6]/div[1]/div[1]/div[2]/a[1]",
+#     "Current Weather":"/html/body/div/div[7]/div[1]/div[1]/a[1]"
 # }
 # ---XPATH-END---
 
@@ -83,24 +82,18 @@ interpreter.llm.temperature = 0.1
 
 interpreter.chat("""
 ---FEATURE-FILE-START---
+Feature: Checking Current Weather on AccuWeather by Typing Location at https://www.accuweather.com/
 
-Feature: Add Books in the cart from Amazon on https://www.amazon.in/
-As a user, I want to select my preferred language on Amazon
+  Scenario: View current weather after typing and selecting a location
+    Given the user is on the AccuWeather search page
+    When the user types "New Delhi" into the location input field and presses enter
+    And the user is redirected to a new page displaying search results
+    And the user selects the first option from the search results
+    And the user is redirected to a new page detailing the location
+    And the user clicks on "Current Weather"
+    Then the user is redirected to a page displaying the current weather information for "New Delhi, India"
 
-Scenario: Select English as the preferred language
-Given user opens Amazon homepage
-When user clicks on the "Change Language" button
-And a page opens for changing the language
-And user selects "English" from the language options
-And user clicks on the "Save Changes" button
 
-Scenario: Select Hindi as the preferred language
-Given user opens Amazon homepage
-When user clicks on the "Change Language" button
-And a page opens for changing the language
-And user selects "Hindi" from the language options
-And user clicks on the "Save Changes" button
-    
 ---FEATURE-FILE-END---
 
 the feature file is given between `---FEATURE-FILE-START---` and `---FEATURE-FILE-END---`
@@ -112,17 +105,16 @@ You can use the following instructions for generating step definition and implem
 3. the implementation file will contain the actual implementation of the test case / feature file containing the imports from step definition file.
 4. Divide feature file big task into small steps / tasks and implement the functions for getting the steps done
 5. Implement all the functions in the implementation and step definition files for completing the task
-5. When done save the file in the current directory using a simple  python script
+6. When done save the file in the current directory using a simple  python script
 
 use the following as locators as Xpaths for implementing the step definition file for accessing the element 
 The Xpaths are given between `---XPATH-START---` and `---XPATH-END---`
 
 ---XPATH-START---
 {
-    "langauge_changer_link" : "//*[@id="icp-nav-flyout"]",
-    "english_checkbox" : "//*[@id="icp-language-settings"]/div[2]/div/label/i",
-    "hindi_checkbox" : "//*[@id="icp-language-settings"]/div[3]/div/label/i",
-    "save_changes" : "//*[@id="icp-save-button"]/span/input"
+    "Input Location":"/html/body/div/div[1]/div[3]/div/div[1]/div[1]/form/input",
+    "Select First Result":"/html/body/div/div[6]/div[1]/div[1]/div[2]/a[1]",
+    "Current Weather":"/html/body/div/div[7]/div[1]/div[1]/a[1]"
 }
 ---XPATH-END---
 
@@ -162,7 +154,8 @@ Important instructions:
 1. Save the code for the implementation and step definition files using a simple python script, do not use terminal for writing in files.
 2. The Xpaths given are accurate hence do not generate on your own
 3. Do not use chromedriver.exe for accessing the browser instead use WebDriverManager library for the same. 
-4. Ensure the step definition file contains launchUrl and closeBrowser methods.
+4. Include waiting time if the code needs to redirect to some other page and a wait time is required for successful code execution
+5. Ensure the step definition file contains launchUrl and closeBrowser methods.
     @Given("the user is on the home page")
     public void launchUrl(){{
         String url = ""; // give the URL here that you want to launch
