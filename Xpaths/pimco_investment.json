@@ -1,0 +1,5 @@
+{
+    "Search Button":"/html/body/header/div/nav/button[1]",
+    "Top Result":"//*[@id="coveoD983BA32"]/div[7]/div[1]/div/div/div[2]/div[2]/div/div/a",
+
+}

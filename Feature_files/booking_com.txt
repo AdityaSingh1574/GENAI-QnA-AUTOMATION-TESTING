@@ -1,0 +1,19 @@
+Vist URL : https://www.booking.com/
+
+Feature: Hotel Booking on Booking.com
+
+  As a global traveler
+  I want to book accommodations on Booking.com
+  So that I can ensure my stay is comfortable and meets my preferences
+
+  Background: 
+    Given the user is on the Booking.com homepage
+
+  Scenario: Successful hotel search 
+    When the user enters "New Delhi" into the destination search field
+    And the user selects the check-in date from calender "2024-09-19"
+    And the user selects the check-out date from calender "2024-09-20"
+    And the user clicks on the search button
+    Then a list of available hotels in New Delhi is displayed
+    When the user selects a top result hotel
+    Then Hotel details page is displayed 
